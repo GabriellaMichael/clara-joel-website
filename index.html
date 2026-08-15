@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clara Joel — Author of YA Romance &amp; Fantasy</title>
+<meta name="description" content="Clara Joel writes young adult romance and fantasy — Beyond the Spotlight, You Versus Me, Lemons and Lemonade, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void: #0f0608;
+    --bg: #170a0d;
+    --bg-alt: #1f0d11;
+    --burgundy: #5c1220;
+    --burgundy-deep: #3a0b14;
+    --burgundy-line: rgba(201,162,75,0.18);
+    --gold: #c9a24b;
+    --gold-bright: #e9cd85;
+    --parchment: #f0e6d2;
+    --parchment-dim: #cbb8a4;
+    --rose: #8b4453;
+    --shadow: rgba(0,0,0,0.45);
+
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'EB Garamond', serif;
+
+    --max-w: 1120px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 20% -10%, rgba(92,18,32,0.55), transparent 55%),
+      radial-gradient(ellipse at 100% 10%, rgba(139,68,83,0.25), transparent 45%),
+      var(--void);
+    color:var(--parchment);
+    font-family:var(--font-body);
+    font-size:18px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+
+  .wrap{ max-width:var(--max-w); margin:0 auto; padding:0 28px; }
+
+  :focus-visible{
+    outline:2px solid var(--gold-bright);
+    outline-offset:3px;
+  }
+
+  /* ---------- Nav ---------- */
+  header.site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(15,6,8,0.72);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--burgundy-line);
+  }
+  .nav-inner{
+    max-width:var(--max-w); margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-name{
+    font-family:var(--font-display);
+    font-size:22px; letter-spacing:0.06em;
+    color:var(--gold-bright); text-decoration:none;
+    font-weight:600;
+  }
+  .nav-links{
+    display:flex; gap:32px; list-style:none; margin:0; padding:0;
+    font-size:15px; letter-spacing:0.09em; text-transform:uppercase;
+  }
+  .nav-links a{
+    text-decoration:none; color:var(--parchment-dim);
+    transition:color .25s ease;
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{ color:var(--gold-bright); border-color:var(--gold); }
+
+  .nav-toggle{
+    display:none;
+    background:none; border:1px solid var(--gold); color:var(--gold-bright);
+    width:40px; height:40px; border-radius:2px; cursor:pointer;
+    font-size:18px;
+  }
+
+  /* ---------- Ornamental divider (signature element) ---------- */
+  .ornament{ display:flex; justify-content:center; margin:28px 0; }
+  .ornament svg{ width:220px; height:34px; }
+  .ornament path, .ornament circle{ stroke:var(--gold); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; padding:140px 28px 80px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 50% 30%, rgba(201,162,75,0.10), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-photo{
+    width:132px; height:132px; border-radius:50%;
+    object-fit:cover;
+    border:1px solid var(--gold);
+    box-shadow:0 0 0 6px var(--burgundy-deep), 0 18px 40px var(--shadow);
+    margin:0 auto 26px;
+  }
+  .eyebrow{
+    font-family:var(--font-body);
+    font-size:13px; letter-spacing:0.32em; text-transform:uppercase;
+    color:var(--rose); margin:0 0 18px;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(52px, 9vw, 96px);
+    line-height:1;
+    margin:0;
+    color:var(--parchment);
+    text-shadow:0 2px 30px rgba(201,162,75,0.15);
+  }
+  .hero .tagline{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:clamp(22px, 3vw, 30px);
+    color:var(--gold-bright);
+    margin:22px 0 8px;
+  }
+  .hero .subhead{
+    max-width:520px; margin:18px auto 0;
+    color:var(--parchment-dim);
+    font-size:18px;
+  }
+  .hero .scroll-cue{
+    margin-top:56px; font-size:13px; letter-spacing:0.25em;
+    text-transform:uppercase; color:var(--rose);
+  }
+
+  /* ---------- Section shell ---------- */
+  section{ padding:110px 0; position:relative; }
+  section + section{ border-top:1px solid var(--burgundy-line); }
+  .section-head{ text-align:center; max-width:640px; margin:0 auto 56px; }
+  .section-eyebrow{
+    font-size:13px; letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--rose); margin:0 0 14px;
+  }
+  h2{
+    font-family:var(--font-display); font-weight:600;
+    font-size:clamp(34px, 5vw, 48px);
+    margin:0; color:var(--parchment);
+  }
+  .section-sub{ color:var(--parchment-dim); margin-top:16px; }
+
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:center;
+  }
+  .about-photo-frame{
+    position:relative; border:1px solid var(--gold);
+    padding:14px;
+  }
+  .about-photo-frame::before{
+    content:""; position:absolute; inset:6px; border:1px solid rgba(201,162,75,0.35); pointer-events:none;
+  }
+  .about-photo-frame img{ width:100%; filter:saturate(0.92) contrast(1.03); }
+  .about-copy p{ color:var(--parchment-dim); font-size:19px; }
+  blockquote.pull{
+    font-family:var(--font-display); font-style:italic;
+    font-size:28px; color:var(--gold-bright);
+    border-left:2px solid var(--gold);
+    margin:28px 0 0; padding-left:22px;
+  }
+  blockquote.pull cite{
+    display:block; margin-top:10px; font-style:normal;
+    font-size:14px; letter-spacing:0.15em; text-transform:uppercase; color:var(--rose);
+  }
+
+  @media (max-width: 760px){
+    .about-grid{ grid-template-columns:1fr; gap:36px; }
+    .about-photo-frame{ max-width:280px; margin:0 auto; }
+  }
+
+  /* ---------- Books ---------- */
+  .books-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:28px;
+  }
+  .book-card{
+    background:linear-gradient(180deg, var(--bg-alt), var(--void));
+    border:1px solid var(--burgundy-line);
+    display:flex; flex-direction:column;
+    transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+  }
+  .book-card:hover, .book-card:focus-within{
+    transform:translateY(-6px);
+    border-color:var(--gold);
+    box-shadow:0 24px 50px var(--shadow);
+  }
+  .book-cover{ width:100%; aspect-ratio:2/3; overflow:hidden; }
+  .book-cover img{ width:100%; height:100%; object-fit:cover; }
+  .book-body{ padding:22px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .book-series{
+    font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--rose); margin:0;
+  }
+  .book-title{
+    font-family:var(--font-display); font-size:23px; font-weight:600;
+    margin:0; color:var(--parchment); line-height:1.15;
+  }
+  .book-author{
+    font-size:14px; color:var(--parchment-dim); margin:0;
+  }
+  .book-teaser{
+    font-style:italic; color:var(--parchment-dim);
+    font-size:15.5px; margin:4px 0 0; flex:1;
+  }
+  .book-cta{
+    margin-top:14px; display:inline-block; text-align:center;
+    padding:11px 16px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase;
+    text-decoration:none; border:1px solid var(--gold); color:var(--gold-bright);
+    transition:background .25s ease, color .25s ease;
+  }
+  .book-cta:hover, .book-cta:focus-visible{ background:var(--gold); color:var(--void); }
+  .book-cta.soon{
+    border-color:var(--burgundy-line); color:var(--parchment-dim);
+    cursor:default; pointer-events:none;
+  }
+
+  @media (max-width: 900px){
+    .books-grid{ grid-template-columns:repeat(2, 1fr); }
+  }
+  @media (max-width: 540px){
+    .books-grid{ grid-template-columns:1fr; max-width:340px; margin:0 auto; }
+  }
+
+  /* ---------- Newsletter ---------- */
+  .newsletter{
+    background:linear-gradient(180deg, var(--burgundy-deep), var(--void));
+  }
+  .newsletter-inner{ max-width:560px; margin:0 auto; text-align:center; }
+  form.signup{
+    margin-top:34px; display:flex; flex-direction:column; gap:16px;
+  }
+  form.signup input[type="text"],
+  form.signup input[type="email"]{
+    background:rgba(15,6,8,0.6);
+    border:1px solid var(--burgundy-line);
+    color:var(--parchment);
+    font-family:var(--font-body); font-size:17px;
+    padding:14px 16px;
+  }
+  form.signup input::placeholder{ color:var(--parchment-dim); }
+  form.signup button{
+    background:var(--gold); color:var(--void);
+    border:none; padding:15px 16px; font-size:14px;
+    letter-spacing:0.16em; text-transform:uppercase;
+    cursor:pointer; transition:background .25s ease;
+    font-family:var(--font-body); font-weight:600;
+  }
+  form.signup button:hover, form.signup button:focus-visible{ background:var(--gold-bright); }
+  .form-note{ font-size:13px; color:var(--parchment-dim); margin-top:14px; }
+  .form-status{ font-size:14px; margin-top:10px; min-height:20px; }
+
+  /* ---------- Connect ---------- */
+  .connect-list{
+    display:flex; justify-content:center; flex-wrap:wrap; gap:14px; margin-top:38px;
+  }
+  .connect-list a{
+    text-decoration:none; border:1px solid var(--gold);
+    padding:13px 26px; font-size:14px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--gold-bright);
+    transition:background .25s ease, color .25s ease;
+  }
+  .connect-list a:hover, .connect-list a:focus-visible{ background:var(--gold); color:var(--void); }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:44px 28px; text-align:center;
+    color:var(--parchment-dim); font-size:14px;
+    border-top:1px solid var(--burgundy-line);
+  }
+  footer .foot-name{ font-family:var(--font-display); color:var(--gold-bright); font-size:17px; margin-bottom:8px; }
+
+  @media (max-width: 720px){
+    .nav-links{ display:none; }
+    .nav-toggle{ display:block; }
+    body.nav-open .nav-links{
+      display:flex; flex-direction:column; gap:0;
+      position:absolute; top:100%; left:0; right:0;
+      background:rgba(15,6,8,0.98);
+      border-top:1px solid var(--burgundy-line);
+      padding:8px 28px 20px;
+    }
+    body.nav-open .nav-links a{ padding:14px 0; border-bottom:1px solid var(--burgundy-line); width:100%; }
+    section{ padding:80px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ transition:none; opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-name">Clara Joel</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#books">Books</a></li>
+        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="#connect">Connect</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" style="border-top:none; min-height:100vh; padding-top:140px;">
+    <div class="wrap">
+      <img src="assets/clara.jpeg" alt="Portrait of author Clara Joel" class="hero-photo">
+      <p class="eyebrow">YA Romance &amp; Fantasy Author</p>
+      <h1>Clara Joel</h1>
+      <p class="tagline">"I can do greater things."</p>
+      <div class="ornament" aria-hidden="true">
+        <svg viewBox="0 0 220 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 17 C 50 2, 80 32, 110 17 C 140 2, 170 32, 216 17" stroke-width="1" />
+          <circle cx="60" cy="17" r="3" fill="var(--gold)" stroke="none"/>
+          <circle cx="110" cy="17" r="4" fill="var(--gold)" stroke="none"/>
+          <circle cx="160" cy="17" r="3" fill="var(--gold)" stroke="none"/>
+        </svg>
+      </div>
+      <p class="subhead">Stories of first heartbreaks, second chances, and the quiet magic hiding in ordinary afternoons.</p>
+      <p class="scroll-cue">Scroll</p>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="wrap reveal">
+      <div class="about-grid">
+        <div class="about-photo-frame">
+          <img src="assets/clara.jpeg" alt="Clara Joel">
+        </div>
+        <div class="about-copy">
+          <p class="section-eyebrow">About Clara</p>
+          <h2 style="margin-bottom:20px;">Lagos-born storyteller</h2>
+          <p>Clara Deborah Joel, known to readers as Clara Joel, was born on July 5, 2001, in Lagos, Nigeria. She began writing in 2017, drawn to storytelling as a way to explore emotion, relationships, and the quiet complexities of everyday life.</p>
+          <p>Her novels move between young adult romance and fantasy — worlds where ordinary hearts learn to want extraordinary things.</p>
+          <blockquote class="pull">
+            "I can do greater things."
+            <cite>— Clara Joel</cite>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BOOKS ================= -->
+  <section id="books">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">The Books</p>
+        <h2>On the Shelf</h2>
+        <p class="section-sub">From stage-light romance to reborn revenge — a shelf that keeps growing.</p>
+      </div>
+
+      <div class="books-grid reveal">
+
+        <article class="book-card">
+          <div class="book-cover"><img src="assets/bts.jpeg" alt="Beyond the Spotlight book cover"></div>
+          <div class="book-body">
+            <p class="book-series">Holiday Spark · Book Two · 2nd Edition</p>
+            <h3 class="book-title">Beyond the Spotlight</h3>
+            <p class="book-author">Clara Joel</p>
+            <!-- Replace teaser copy below with Clara's official blurb -->
+            <p class="book-teaser">Under the lights, everyone's watching. She just wants him to see her.</p>
+            <a class="book-cta" href="https://a.co/d/03cwXBXI" target="_blank" rel="noopener">Get it on Amazon</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div class="book-cover"><img src="assets/rim.jpeg" alt="Reborn: I Married His Nemesis book cover"></div>
+          <div class="book-body">
+            <p class="book-series">Standalone</p>
+            <h3 class="book-title">Reborn: I Married His Nemesis</h3>
+            <p class="book-author">CJ Fantasies</p>
+            <!-- Replace teaser copy below with the official blurb -->
+            <p class="book-teaser">She's lived this marriage before. This time, she's rewriting the ending.</p>
+            <a class="book-cta" href="https://www.novelol.com/goodnovel/share?bid=31001504507&uid=81933860&l=bookDetail&sc=fxrw_0_bookDetail&rd=1&type=3" target="_blank" rel="noopener">Read on GoodNovel</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div class="book-cover"><img src="assets/yvm.jpeg" alt="You Versus Me book cover"></div>
+          <div class="book-body">
+            <p class="book-series">Standalone</p>
+            <h3 class="book-title">You Versus Me</h3>
+            <p class="book-author">Clara Joel</p>
+            <p class="book-teaser">One mistake. Two broken hearts. And a whole lot of chaos.</p>
+            <span class="book-cta soon">Coming Soon</span>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div class="book-cover"><img src="assets/lal.jpeg" alt="Lemons and Lemonade book cover"></div>
+          <div class="book-body">
+            <p class="book-series">By the author of All Those Times</p>
+            <h3 class="book-title">Lemons and Lemonade</h3>
+            <p class="book-author">Clara Joel</p>
+            <!-- Replace teaser copy below with the official blurb -->
+            <p class="book-teaser">Some rivalries turn sweeter than they should.</p>
+            <span class="book-cta soon">Coming Soon</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= NEWSLETTER ================= -->
+  <section id="newsletter" class="newsletter">
+    <div class="wrap">
+      <div class="newsletter-inner reveal">
+        <p class="section-eyebrow">Stay In Touch</p>
+        <h2>Join the Circle</h2>
+        <p class="section-sub">New chapters, cover reveals, and the occasional plot spiral — straight to your inbox.</p>
+
+        <form class="signup" id="signupForm" action="https://api.web3forms.com/submit" method="POST">
+          <!-- Get a free access key at web3forms.com and paste it below -->
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+          <input type="hidden" name="subject" value="New newsletter signup — clarajoelbooks.com.ng">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+          <button type="submit">Sign Up</button>
+        </form>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        <p class="form-note">No spam — just Clara's news, when there's news to share.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONNECT ================= -->
+  <section id="connect">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">Find Clara</p>
+        <h2>Say Hello</h2>
+      </div>
+      <div class="connect-list reveal">
+        <a href="https://instagram.com/Clarajoelwrites" target="_blank" rel="noopener">Instagram</a>
+        <!-- Replace with Clara's actual Facebook profile/page URL -->
+        <a href="https://www.facebook.com/search/top/?q=Clara%20Joel" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://youtube.com/@clarajoel-b7l" target="_blank" rel="noopener">YouTube</a>
+        <a href="mailto:clarajoelbooks@gmail.com">Email</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-name">Clara Joel</div>
+  <p>© <span id="year"></span> Clara Joel · clarajoelbooks.com.ng</p>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  navToggle.addEventListener('click', () => {
+    const isOpen = document.body.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.body.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Scroll reveal
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+  }
+
+  // Newsletter form feedback (Web3Forms)
+  const form = document.getElementById('signupForm');
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = 'Sending...';
+    const data = new FormData(form);
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: data });
+      const result = await res.json();
+      if (result.success) {
+        status.textContent = "You're in — thank you!";
+        form.reset();
+      } else {
+        status.textContent = 'Something went wrong. Please try again.';
+      }
+    } catch (err) {
+      status.textContent = 'Something went wrong. Please try again.';
+    }
+  });
+</script>
+
+</body>
+</html>
