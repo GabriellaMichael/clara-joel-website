@@ -338,7 +338,7 @@
   <!-- ================= HERO ================= -->
   <section class="hero" style="border-top:none; min-height:100vh; padding-top:140px;">
     <div class="wrap">
-      <img src="assets/clara.jpeg" alt="Portrait of author Clara Joel" class="hero-photo">
+      <img src="clara.jpeg" alt="Portrait of author Clara Joel" class="hero-photo">
       <p class="eyebrow">YA Romance &amp; Fantasy Author</p>
       <h1>Clara Joel</h1>
       <p class="tagline">"I can do greater things."</p>
@@ -360,7 +360,7 @@
     <div class="wrap reveal">
       <div class="about-grid">
         <div class="about-photo-frame">
-          <img src="assets/clara.jpeg" alt="Clara Joel">
+          <img src="clara.jpeg" alt="Clara Joel">
         </div>
         <div class="about-copy">
           <p class="section-eyebrow">About Clara</p>
@@ -388,7 +388,7 @@
       <div class="books-grid reveal">
 
         <article class="book-card">
-          <div class="book-cover"><img src="assets/bts.jpeg" alt="Beyond the Spotlight book cover"></div>
+          <div class="book-cover"><img src="bts.jpeg" alt="Beyond the Spotlight book cover"></div>
           <div class="book-body">
             <p class="book-series">Holiday Spark · Book Two · 2nd Edition</p>
             <h3 class="book-title">Beyond the Spotlight</h3>
@@ -400,7 +400,7 @@
         </article>
 
         <article class="book-card">
-          <div class="book-cover"><img src="assets/rim.jpeg" alt="Reborn: I Married His Nemesis book cover"></div>
+          <div class="book-cover"><img src="rim.jpeg" alt="Reborn: I Married His Nemesis book cover"></div>
           <div class="book-body">
             <p class="book-series">Standalone</p>
             <h3 class="book-title">Reborn: I Married His Nemesis</h3>
@@ -412,7 +412,7 @@
         </article>
 
         <article class="book-card">
-          <div class="book-cover"><img src="assets/yvm.jpeg" alt="You Versus Me book cover"></div>
+          <div class="book-cover"><img src="yvm.jpeg" alt="You Versus Me book cover"></div>
           <div class="book-body">
             <p class="book-series">Standalone</p>
             <h3 class="book-title">You Versus Me</h3>
@@ -423,7 +423,7 @@
         </article>
 
         <article class="book-card">
-          <div class="book-cover"><img src="assets/lal.jpeg" alt="Lemons and Lemonade book cover"></div>
+          <div class="book-cover"><img src="lal.jpeg" alt="Lemons and Lemonade book cover"></div>
           <div class="book-body">
             <p class="book-series">By the author of All Those Times</p>
             <h3 class="book-title">Lemons and Lemonade</h3>
@@ -448,7 +448,7 @@
 
         <form class="signup" id="signupForm" action="https://api.web3forms.com/submit" method="POST">
           <!-- Get a free access key at web3forms.com and paste it below -->
-          <input type="hidden" name="access key" value="c43a0722-8744-4364-b4ef-53cd42b43471">
+          <input type="hidden" name="access_key" value=c43a0722-8744-4364-b4ef-53cd42b43471>
           <input type="hidden" name="subject" value="New newsletter signup — clarajoelbooks.com.ng">
           <input type="text" name="name" placeholder="Your name" required>
           <input type="email" name="email" placeholder="Your email" required>
@@ -523,21 +523,4 @@
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     status.textContent = 'Sending...';
-    const data = new FormData(form);
-    try {
-      const res = await fetch(form.action, { method: 'POST', body: data });
-      const result = await res.json();
-      if (result.success) {
-        status.textContent = "You're in — thank you!";
-        form.reset();
-      } else {
-        status.textContent = 'Something went wrong. Please try again.';
-      }
-    } catch (err) {
-      status.textContent = 'Something went wrong. Please try again.';
-    }
-  });
-</script>
-
-</body>
-</html>
+    const data = new Fo
