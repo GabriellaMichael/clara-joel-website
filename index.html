@@ -10,17 +10,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream: #ede0d8;
-    --cream-alt: #e4d2c8;
-    --blush: #ddc0c2;
-    --rose: #b97e8b;
-    --rose-deep: #94566a;
-    --rose-line: rgba(148,86,106,0.25);
-    --gold: #b48c4e;
-    --gold-bright: #c9a15a;
-    --text-dark: #3a2830;
-    --text-dim: #705459;
-    --shadow: rgba(90,58,64,0.22);
+    --cream: #2d1327;
+    --cream-alt: #3a1a33;
+    --blush: #4a2143;
+    --rose: #c9a3ae;
+    --rose-deep: #cba55a;
+    --rose-line: rgba(201,162,75,0.20);
+    --gold: #b8903f;
+    --gold-bright: #ddb96f;
+    --text-dark: #f3e6d8;
+    --text-dim: #cdb9ac;
+    --shadow: rgba(0,0,0,0.45);
+    --charcoal: #241a20;
 
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'EB Garamond', serif;
@@ -34,8 +35,8 @@
   body{
     margin:0;
     background:
-      radial-gradient(ellipse at 15% -10%, rgba(221,192,194,0.6), transparent 55%),
-      radial-gradient(ellipse at 100% 10%, rgba(148,86,106,0.14), transparent 45%),
+      radial-gradient(ellipse at 15% -10%, rgba(74,33,67,0.55), transparent 55%),
+      radial-gradient(ellipse at 100% 10%, rgba(201,162,75,0.10), transparent 45%),
       var(--cream);
     color:var(--text-dark);
     font-family:var(--font-body);
@@ -56,7 +57,7 @@
 
   header.site-nav{
     position:fixed; top:0; left:0; right:0; z-index:50;
-    background:rgba(237,224,216,0.85);
+    background:rgba(45,19,39,0.85);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--rose-line);
   }
@@ -217,7 +218,7 @@
     text-decoration:none; border:1px solid var(--gold); color:var(--rose-deep);
     transition:background .25s ease, color .25s ease;
   }
-  .book-cta:hover, .book-cta:focus-visible{ background:var(--gold); color:#fff; }
+  .book-cta:hover, .book-cta:focus-visible{ background:var(--gold); color:var(--charcoal); }
   .book-cta.soon{
     border-color:var(--rose-line); color:var(--text-dim);
     cursor:default; pointer-events:none;
@@ -264,10 +265,10 @@
   .arc-cta{
     display:inline-block; margin-top:28px;
     padding:15px 30px; font-size:14px; letter-spacing:0.14em; text-transform:uppercase;
-    text-decoration:none; background:var(--rose-deep); color:#fff;
+    text-decoration:none; background:var(--rose-deep); color:var(--charcoal);
     transition:background .25s ease;
   }
-  .arc-cta:hover, .arc-cta:focus-visible{ background:var(--gold); }
+  .arc-cta:hover, .arc-cta:focus-visible{ background:var(--gold-bright); }
 
   .newsletter{
     background:linear-gradient(180deg, var(--cream-alt), var(--cream));
@@ -278,7 +279,7 @@
   }
   form.signup input[type="text"],
   form.signup input[type="email"]{
-    background:#fff;
+    background:rgba(243,230,216,0.07);
     border:1px solid var(--rose-line);
     color:var(--text-dark);
     font-family:var(--font-body); font-size:17px;
@@ -286,13 +287,13 @@
   }
   form.signup input::placeholder{ color:var(--text-dim); }
   form.signup button{
-    background:var(--rose-deep); color:#fff;
+    background:var(--rose-deep); color:var(--charcoal);
     border:none; padding:15px 16px; font-size:14px;
     letter-spacing:0.16em; text-transform:uppercase;
     cursor:pointer; transition:background .25s ease;
     font-family:var(--font-body); font-weight:600;
   }
-  form.signup button:hover, form.signup button:focus-visible{ background:var(--gold); }
+  form.signup button:hover, form.signup button:focus-visible{ background:var(--gold-bright); }
   .form-note{ font-size:13px; color:var(--text-dim); margin-top:14px; }
   .form-status{ font-size:14px; margin-top:10px; min-height:20px; color:var(--rose-deep); }
 
@@ -305,7 +306,7 @@
     text-transform:uppercase; color:var(--rose-deep);
     transition:background .25s ease, color .25s ease;
   }
-  .connect-list a:hover, .connect-list a:focus-visible{ background:var(--gold); color:#fff; }
+  .connect-list a:hover, .connect-list a:focus-visible{ background:var(--gold); color:var(--charcoal); }
 
   footer{
     padding:44px 28px; text-align:center;
@@ -320,7 +321,7 @@
     body.nav-open .nav-links{
       display:flex; flex-direction:column; gap:0;
       position:absolute; top:100%; left:0; right:0;
-      background:rgba(237,224,216,0.98);
+      background:rgba(45,19,39,0.97);
       border-top:1px solid var(--rose-line);
       padding:8px 28px 20px;
     }
@@ -492,7 +493,7 @@
 
         <form class="signup" id="signupForm" action="https://api.web3forms.com/submit" method="POST">
           <!-- Get a free access key at web3forms.com and paste it below -->
-          <input type="hidden" name="access_key" value="c43a0722-8744-4364-b4ef-53cd42b43471">
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
           <input type="hidden" name="subject" value="New newsletter signup — clarajoelbooks.com.ng">
           <input type="text" name="name" placeholder="Your name" required>
           <input type="email" name="email" placeholder="Your email" required>
