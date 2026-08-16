@@ -10,17 +10,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream: #fdf5f1;
-    --cream-alt: #f8e9e2;
-    --blush: #f3d9df;
-    --rose: #c98a99;
-    --rose-deep: #a85f74;
-    --rose-line: rgba(168,95,116,0.22);
-    --gold: #c9a15a;
-    --gold-bright: #dcb877;
-    --text-dark: #402a32;
-    --text-dim: #7a5b62;
-    --shadow: rgba(122,75,84,0.18);
+    --cream: #ede0d8;
+    --cream-alt: #e4d2c8;
+    --blush: #ddc0c2;
+    --rose: #b97e8b;
+    --rose-deep: #94566a;
+    --rose-line: rgba(148,86,106,0.25);
+    --gold: #b48c4e;
+    --gold-bright: #c9a15a;
+    --text-dark: #3a2830;
+    --text-dim: #705459;
+    --shadow: rgba(90,58,64,0.22);
 
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'EB Garamond', serif;
@@ -34,8 +34,8 @@
   body{
     margin:0;
     background:
-      radial-gradient(ellipse at 15% -10%, rgba(243,217,223,0.7), transparent 55%),
-      radial-gradient(ellipse at 100% 10%, rgba(201,138,153,0.18), transparent 45%),
+      radial-gradient(ellipse at 15% -10%, rgba(221,192,194,0.6), transparent 55%),
+      radial-gradient(ellipse at 100% 10%, rgba(148,86,106,0.14), transparent 45%),
       var(--cream);
     color:var(--text-dark);
     font-family:var(--font-body);
@@ -56,7 +56,7 @@
 
   header.site-nav{
     position:fixed; top:0; left:0; right:0; z-index:50;
-    background:rgba(253,245,241,0.82);
+    background:rgba(237,224,216,0.85);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--rose-line);
   }
@@ -320,7 +320,7 @@
     body.nav-open .nav-links{
       display:flex; flex-direction:column; gap:0;
       position:absolute; top:100%; left:0; right:0;
-      background:rgba(253,245,241,0.98);
+      background:rgba(237,224,216,0.98);
       border-top:1px solid var(--rose-line);
       padding:8px 28px 20px;
     }
@@ -492,7 +492,7 @@
 
         <form class="signup" id="signupForm" action="https://api.web3forms.com/submit" method="POST">
           <!-- Get a free access key at web3forms.com and paste it below -->
-          <input type="hidden" name="access_key" value="c43a0722-8744-4364-b4ef-53cd42b43471">
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
           <input type="hidden" name="subject" value="New newsletter signup — clarajoelbooks.com.ng">
           <input type="text" name="name" placeholder="Your name" required>
           <input type="email" name="email" placeholder="Your email" required>
