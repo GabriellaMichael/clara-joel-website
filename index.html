@@ -84,11 +84,41 @@
   .nav-links a:hover, .nav-links a:focus-visible{ color:var(--rose-deep); border-color:var(--gold); }
 
   .nav-toggle{
-    display:none;
-    background:none; border:1px solid var(--rose-deep); color:var(--rose-deep);
-    width:40px; height:40px; border-radius:2px; cursor:pointer;
-    font-size:18px;
+    display:flex; flex-direction:column; justify-content:center; gap:5px;
+    background:none; border:0; color:var(--rose-deep);
+    width:42px; height:42px; padding:7px 5px; cursor:pointer;
+    position:relative; z-index:61;
   }
+  .nav-toggle span{ display:block; width:28px; height:1px; background:var(--rose-deep); transition:transform .25s ease, opacity .2s ease; }
+  body.nav-open .nav-toggle span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+  body.nav-open .nav-toggle span:nth-child(2){ opacity:0; }
+  body.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+
+  .menu-overlay{
+    position:fixed; inset:0; background:rgba(20,8,18,.58); z-index:55;
+    opacity:0; visibility:hidden; transition:opacity .3s ease, visibility .3s ease;
+  }
+  .menu-drawer{
+    position:fixed; top:0; left:0; bottom:0; width:min(430px,88vw);
+    background:linear-gradient(160deg,var(--cream) 0%,var(--charcoal) 100%);
+    border-right:1px solid var(--rose-line); z-index:60;
+    padding:34px 34px 40px; transform:translateX(-105%);
+    transition:transform .38s cubic-bezier(.22,.61,.36,1);
+    box-shadow:18px 0 50px rgba(0,0,0,.25); overflow-y:auto;
+  }
+  body.nav-open .menu-overlay{ opacity:1; visibility:visible; }
+  body.nav-open .menu-drawer{ transform:translateX(0); }
+  .menu-drawer-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:55px; }
+  .menu-brand{ font-family:var(--font-display); font-size:25px; color:var(--rose-deep); letter-spacing:.08em; }
+  .menu-close{ border:0; background:none; color:var(--rose-deep); font-size:32px; line-height:1; cursor:pointer; padding:4px; }
+  .drawer-links{ list-style:none; padding:0; margin:0; }
+  .drawer-links li{ border-bottom:1px solid rgba(221,185,111,.22); }
+  .drawer-links a{ display:flex; align-items:center; justify-content:space-between; padding:18px 0; color:var(--text-dark); text-decoration:none; font-family:var(--font-display); font-size:24px; letter-spacing:.03em; transition:color .2s ease, padding-left .2s ease; }
+  .drawer-links a::after{ content:'↗'; font-family:var(--font-body); font-size:16px; color:var(--gold); opacity:.8; }
+  .drawer-links a:hover,.drawer-links a:focus-visible{ color:var(--rose-deep); padding-left:6px; }
+  .menu-note{ margin-top:55px; color:var(--text-dim); font-size:13px; line-height:1.7; max-width:290px; }
+  .menu-socials{ display:flex; gap:16px; flex-wrap:wrap; margin-top:20px; }
+  .menu-socials a{ color:var(--rose-deep); text-decoration:none; font-size:12px; letter-spacing:.1em; text-transform:uppercase; }
 
   .ornament{ display:flex; justify-content:center; margin:28px 0; }
   .ornament svg{ width:220px; height:34px; }
@@ -143,6 +173,42 @@
     margin-top:56px; font-size:13px; letter-spacing:0.25em;
     text-transform:uppercase; color:var(--rose);
   }
+
+  /* Homepage hero inspired by the editorial feel of modern author websites */
+  .site-nav{ transition:background .3s ease, border-color .3s ease; }
+  .nav-inner{ position:relative; min-height:74px; }
+  .nav-name{ position:absolute; left:50%; transform:translateX(-50%); font-size:26px; letter-spacing:.08em; white-space:nowrap; }
+  .nav-actions{ margin-left:auto; display:flex; align-items:center; gap:18px; }
+  .nav-icon{ width:30px; height:30px; display:grid; place-items:center; border:none; background:none; color:var(--rose-deep); padding:3px; cursor:pointer; text-decoration:none; }
+  .nav-icon svg{ width:21px; height:21px; fill:none; stroke:currentColor; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; }
+  .nav-icon:hover{ color:var(--gold-bright); }
+  .site-nav nav{ position:absolute; left:0; right:0; top:100%; display:none; }
+  .search-panel{ position:fixed; inset:74px 0 auto; z-index:49; padding:22px 28px 28px; background:rgba(45,19,39,.98); border-bottom:1px solid var(--rose-line); transform:translateY(-130%); transition:transform .35s ease; }
+  body.search-open .search-panel{ transform:translateY(0); }
+  .search-panel-inner{ max-width:var(--max-w); margin:0 auto; }
+  .search-panel label{ display:block; margin-bottom:9px; color:var(--rose-deep); text-transform:uppercase; letter-spacing:.2em; font-size:11px; }
+  .search-box{ display:flex; border-bottom:1px solid var(--gold); }
+  .search-box input{ flex:1; border:0; outline:0; background:transparent; color:var(--text-dark); padding:12px 0; font:20px var(--font-body); }
+  .search-box input::placeholder{ color:var(--text-dim); }
+  .search-box button{ border:0; background:none; color:var(--rose-deep); font-size:30px; cursor:pointer; }
+
+  .hero{ min-height:calc(100vh - 0px); padding:125px 28px 90px; text-align:left; background:radial-gradient(circle at 75% 45%, rgba(201,161,90,.13), transparent 35%), linear-gradient(115deg, var(--cream) 0%, var(--cream-alt) 54%, var(--charcoal) 100%); }
+  .hero-inner{ display:grid; grid-template-columns:1.05fr .95fr; gap:70px; align-items:center; min-height:calc(100vh - 215px); position:relative; z-index:1; }
+  .hero-copy{ max-width:650px; }
+  .hero .eyebrow{ margin-bottom:22px; }
+  .hero h1{ font-size:clamp(52px, 7vw, 86px); line-height:.95; letter-spacing:-.02em; }
+  .hero h1 em{ color:var(--rose-deep); font-style:italic; font-weight:500; }
+  .hero-subhead{ max-width:590px; color:var(--text-dim); font-size:20px; margin:28px 0 0; }
+  .hero-cta{ display:inline-block; margin-top:34px; padding:15px 25px; border:1px solid var(--gold); color:var(--text-dark); text-decoration:none; text-transform:uppercase; letter-spacing:.12em; font-size:12px; transition:background .25s ease, color .25s ease; }
+  .hero-cta:hover,.hero-cta:focus-visible{ background:var(--gold); color:var(--charcoal); }
+  .hero-book-wrap{ justify-self:end; width:min(390px,100%); text-align:center; position:relative; }
+  .hero-book{ width:100%; aspect-ratio:2/3; object-fit:cover; position:relative; z-index:1; box-shadow:0 32px 70px rgba(0,0,0,.55); border:1px solid rgba(221,185,111,.5); }
+  .hero-book-glow{ position:absolute; inset:8% -8% -8%; background:radial-gradient(ellipse, rgba(221,185,111,.18), transparent 65%); filter:blur(10px); }
+  .hero-book-note{ margin:18px 0 0; color:var(--text-dim); font-size:13px; letter-spacing:.12em; text-transform:uppercase; }
+  .hero-glow{ position:absolute; inset:0; pointer-events:none; background-image:radial-gradient(rgba(243,230,216,.14) 1px, transparent 1px); background-size:42px 42px; mask-image:linear-gradient(to bottom, black, transparent 85%); }
+
+  .about-eyebrow{ margin:0 0 8px; color:var(--rose-deep); font-size:12px; text-transform:uppercase; letter-spacing:.28em; }
+  .about-intro{ font-family:var(--font-display); font-size:25px !important; line-height:1.3; color:var(--text-dark) !important; }
 
   section{ padding:110px 0; position:relative; }
   section + section{ border-top:1px solid var(--rose-line); }
@@ -231,32 +297,87 @@
     .books-grid{ grid-template-columns:1fr; max-width:340px; margin:0 auto; }
   }
 
-  .carousel-wrap{ max-width:230px; margin:56px auto 0; }
+  .carousel-wrap{
+    max-width:1180px;
+    margin:86px auto 0;
+    position:relative;
+  }
+  .carousel-heading{
+    text-align:center;
+    margin-bottom:38px;
+  }
+  .carousel-heading p{
+    margin:0 0 10px;
+    font-size:12px;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--rose-deep);
+  }
+  .carousel-heading h3{
+    margin:0;
+    font-family:var(--font-display);
+    font-size:clamp(32px,4.5vw,48px);
+    font-weight:600;
+    color:var(--text-dark);
+  }
+  .carousel-shell{
+    position:relative;
+    padding:0;
+  }
   .carousel{
-    position:relative; overflow:hidden;
-    border:1px solid var(--gold);
-    background:var(--cream-alt);
+    position:relative;
+    overflow:hidden;
+    background:transparent;
+    border:none;
+    padding:10px 0 24px;
   }
   .carousel-track{
-    display:flex; transition:transform .6s ease;
+    display:flex;
+    gap:30px;
+    transition:transform .75s cubic-bezier(.22,.61,.36,1);
+    will-change:transform;
   }
   .carousel-slide{
-    min-width:100%; aspect-ratio:2/3;
+    flex:0 0 31.5%;
+    aspect-ratio:2/3;
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--rose-line);
+    background:var(--cream-alt);
+    box-shadow:0 18px 42px rgba(0,0,0,.28);
+    transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
   }
-  .carousel-slide img{ width:100%; height:100%; object-fit:cover; }
+  .carousel-slide:hover{
+    transform:translateY(-7px);
+    border-color:var(--gold);
+    box-shadow:0 24px 48px var(--shadow);
+  }
+  .carousel-slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .carousel-badge{
+    position:absolute;
+    left:16px;
+    bottom:16px;
+    padding:8px 12px;
+    background:rgba(45,19,39,.9);
+    color:var(--cream);
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+  }
   .carousel-caption{
-    text-align:center; margin-top:14px;
-    font-family:var(--font-display); font-size:17px; color:var(--text-dark);
+    text-align:center;
+    margin:22px auto 0;
+    font-family:var(--font-display);
+    font-size:21px;
+    color:var(--text-dark);
+    min-height:31px;
   }
-  .carousel-dots{
-    display:flex; justify-content:center; gap:10px; margin-top:16px;
-  }
-  .carousel-dots button{
-    width:9px; height:9px; border-radius:50%;
-    border:1px solid var(--gold); background:transparent;
-    padding:0; cursor:pointer;
-  }
-  .carousel-dots button.active{ background:var(--gold); }
+
 
   .arc-callout{
     background:linear-gradient(180deg, var(--blush), var(--cream));
@@ -297,6 +418,38 @@
   .form-note{ font-size:13px; color:var(--text-dim); margin-top:14px; }
   .form-status{ font-size:14px; margin-top:10px; min-height:20px; color:var(--rose-deep); }
 
+  .newsletter-popup{
+    position:fixed; inset:0; z-index:2000; display:flex; align-items:center; justify-content:center;
+    padding:24px; background:rgba(30,18,27,.68); backdrop-filter:blur(4px);
+    opacity:0; visibility:hidden; pointer-events:none; transition:opacity .3s ease, visibility .3s ease;
+  }
+  .newsletter-popup.is-open{ opacity:1; visibility:visible; pointer-events:auto; }
+  .newsletter-popup-card{
+    position:relative; width:min(620px, 100%); padding:52px 44px 44px;
+    background:var(--cream); border:1px solid var(--gold); box-shadow:0 30px 80px rgba(0,0,0,.28);
+    text-align:center; transform:translateY(18px) scale(.98); transition:transform .3s ease;
+  }
+  .newsletter-popup.is-open .newsletter-popup-card{ transform:translateY(0) scale(1); }
+  .newsletter-popup-card .section-eyebrow{ margin-bottom:10px; }
+  .newsletter-popup-card h2{ margin:0 auto 14px; }
+  .newsletter-popup-copy{ max-width:480px; margin:0 auto; line-height:1.7; color:var(--text-dark); }
+  .newsletter-popup-form{ display:flex; gap:10px; max-width:500px; margin:26px auto 0; }
+  .newsletter-popup-form input{ flex:1; min-width:0; background:transparent; border:1px solid var(--rose-line); padding:14px 15px; color:var(--text-dark); font:inherit; }
+  .newsletter-popup-form button{ border:0; padding:14px 20px; background:var(--rose-deep); color:var(--charcoal); font:600 13px var(--font-body); letter-spacing:.12em; text-transform:uppercase; cursor:pointer; }
+  .newsletter-popup-form button:hover,.newsletter-popup-form button:focus-visible{ background:var(--gold-bright); }
+  .newsletter-popup-note{ margin:14px 0 0; font-size:12px; color:var(--text-dim); }
+  .newsletter-popup-status{ min-height:20px; margin:10px 0 0; font-size:13px; color:var(--rose-deep); }
+  .newsletter-popup-close{
+    position:absolute; top:14px; right:16px; width:38px; height:38px; border:0; background:transparent;
+    color:var(--text-dark); font-size:28px; line-height:1; cursor:pointer;
+  }
+  @media (max-width:640px){
+    .newsletter-popup{ align-items:flex-end; padding:0; }
+    .newsletter-popup-card{ width:100%; padding:44px 22px 28px; border-left:0; border-right:0; border-bottom:0; }
+    .newsletter-popup-form{ flex-direction:column; }
+    .newsletter-popup-form button{ width:100%; }
+  }
+
   .connect-list{
     display:flex; justify-content:center; flex-wrap:wrap; gap:14px; margin-top:38px;
   }
@@ -317,15 +470,19 @@
 
   @media (max-width: 720px){
     .nav-links{ display:none; }
-    .nav-toggle{ display:block; }
-    body.nav-open .nav-links{
-      display:flex; flex-direction:column; gap:0;
-      position:absolute; top:100%; left:0; right:0;
-      background:rgba(45,19,39,0.97);
-      border-top:1px solid var(--rose-line);
-      padding:8px 28px 20px;
-    }
-    body.nav-open .nav-links a{ padding:14px 0; border-bottom:1px solid var(--rose-line); width:100%; }
+    .nav-toggle{ display:flex; }
+    .nav-name{ font-size:22px; }
+    .nav-actions{ gap:10px; }
+    .hero{ padding-top:112px; }
+    .hero-inner{ grid-template-columns:1fr; gap:48px; min-height:auto; }
+    .hero-copy{ text-align:center; margin:0 auto; }
+    .hero .eyebrow{ text-align:center; }
+    .hero-subhead{ margin-left:auto; margin-right:auto; }
+    .hero-book-wrap{ justify-self:center; width:min(310px,88vw); }
+    .search-panel{ inset:70px 0 auto; }
+    .menu-drawer{ width:min(390px,90vw); padding:28px 25px 35px; }
+    .menu-drawer-header{ margin-bottom:40px; }
+    .drawer-links a{ font-size:22px; }
     section{ padding:80px 0; }
   }
 
@@ -340,38 +497,74 @@
 
 <header class="site-nav">
   <div class="nav-inner">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
     <a href="#top" class="nav-name">Clara Joel</a>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#books">Books</a></li>
-        <li><a href="#arc">ARC Team</a></li>
-        <li><a href="#newsletter">Newsletter</a></li>
-        <li><a href="#connect">Connect</a></li>
-      </ul>
-    </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+
+    <div class="nav-actions">
+      <button class="nav-icon" id="searchToggle" aria-label="Search" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"></circle><path d="M16 16l5 5"></path></svg>
+      </button>
+      <a class="nav-icon" href="#books" aria-label="Shopping bag">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 8.5h13l1 11h-15z"></path><path d="M9 9V6.5a3 3 0 0 1 6 0V9"></path></svg>
+      </a>
+    </div>
+
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+    <aside class="menu-drawer" id="menuDrawer" aria-label="Main navigation" aria-hidden="true">
+      <div class="menu-drawer-header">
+        <div class="menu-brand">Clara Joel</div>
+        <button class="menu-close" id="menuClose" type="button" aria-label="Close menu">×</button>
+      </div>
+      <nav aria-label="Main navigation">
+        <ul class="drawer-links">
+          <li><a href="#top">Home</a></li>
+          <li><a href="#about">About Clara</a></li>
+          <li><a href="#books">Books</a></li>
+          <li><a href="#arc">ARC Team</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
+          <li><a href="#connect">Connect</a></li>
+        </ul>
+      </nav>
+      <p class="menu-note">Stories, secrets, impossible love stories, and a little holiday chaos.</p>
+      <div class="menu-socials">
+        <a href="https://instagram.com/Clarajoelwrites" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/share/198j1yuRaY/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://youtube.com/@clarajoel-b7l" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </aside>
   </div>
 </header>
+
+<div class="search-panel" id="searchPanel" aria-hidden="true">
+  <div class="search-panel-inner">
+    <label for="siteSearch">Search the site</label>
+    <div class="search-box">
+      <input id="siteSearch" type="search" placeholder="Search books, Clara Joel, and more…" autocomplete="off">
+      <button id="searchClose" type="button" aria-label="Close search">×</button>
+    </div>
+  </div>
+</div>
 
 <main id="top">
 
   <section class="hero">
-    <div class="wrap">
-      <img src="clara2.jpeg" alt="Portrait of author Clara Joel" class="hero-photo">
-      <p class="eyebrow">YA Romance, Fantasy &amp; Mystery Author</p>
-      <h1>Clara Joel</h1>
-      <p class="tagline">An Author with a Heart of Fire</p>
-      <div class="ornament" aria-hidden="true">
-        <svg viewBox="0 0 220 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 17 C 50 2, 80 32, 110 17 C 140 2, 170 32, 216 17" stroke-width="1" />
-          <circle cx="60" cy="17" r="3" fill="var(--gold)" stroke="none"/>
-          <circle cx="110" cy="17" r="4" fill="var(--gold)" stroke="none"/>
-          <circle cx="160" cy="17" r="3" fill="var(--gold)" stroke="none"/>
-        </svg>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">A Christmas Mystery</p>
+        <h1>This Christmas,<br><em>something big is coming.</em></h1>
+        <p class="hero-subhead">Some secrets are meant to stay hidden. But Christmas has a way of bringing them to light. Two girls, two secrets are on the line.</p>
+        <a class="hero-cta" href="#books">Coming Soon · December 24th</a>
       </div>
-      <p class="subhead">Stories of romance, fantasy, and mystery — worlds that pull you in and keep you turning the pages.</p>
-      <p class="scroll-cue">Scroll</p>
+
+      <div class="hero-book-wrap">
+        <div class="hero-book-glow" aria-hidden="true"></div>
+        <img src="evergreen-lane.jpeg" alt="The Secrets Of Evergreen Lane book cover" class="hero-book">
+        <p class="hero-book-note">The first book in the Evergreen Lane Christmas Series</p>
+      </div>
     </div>
   </section>
 
@@ -382,7 +575,9 @@
           <img src="clara2.jpeg" alt="Clara Joel">
         </div>
         <div class="about-copy">
-          <h2 style="margin-bottom:20px;">About the Author</h2>
+          <p class="about-eyebrow">Meet the Author</p>
+          <h2 style="margin-bottom:14px;">Meet Clara Joel</h2>
+          <p class="about-intro">Writer of swoony YA romance, werewolf romance, and Christmas mysteries. Collector of happy endings. Lover of impossible love stories, moonlit mayhem, and a little holiday chaos.</p>
           <p>Clara Joel is a Nigerian author who writes young adult romance, fantasy, and mystery novels, with a particular love for Christmas mystery series. Her stories are filled with romance, intriguing plotlines, unexpected twists, and memorable characters that draw readers into captivating worlds. From heartfelt romances to fantastical adventures and mysteries that keep readers guessing, Clara enjoys creating stories that offer an escape while keeping readers turning the pages.</p>
           <p>When she isn't writing, Clara enjoys getting lost in a good book, designing book covers, or spending time in nature. Her stories can be found across various online reading platforms, giving readers the opportunity to explore her collection and discover their next favorite story.</p>
           <p>Dive into Clara Joel's world of romance, fantasy, and mystery, and let her stories take you somewhere unforgettable, one page at a time.</p>
@@ -471,16 +666,25 @@
       </div>
 
       <div class="carousel-wrap reveal">
-        <div class="carousel" id="carousel">
-          <div class="carousel-track" id="carouselTrack">
-            <div class="carousel-slide"><img src="bts.jpeg" alt="Beyond the Spotlight"></div>
-            <div class="carousel-slide"><img src="rim.jpeg" alt="Reborn: I Married His Nemesis"></div>
-            <div class="carousel-slide"><img src="yvm.jpeg" alt="You Versus Me"></div>
-            <div class="carousel-slide"><img src="lal.jpeg" alt="Lemons and Lemonade"></div>
+        <div class="carousel-heading">
+          <p>Explore the Library</p>
+          <h3>Explore the Books</h3>
+        </div>
+        <div class="carousel-shell">
+          <div class="carousel" id="carousel">
+            <div class="carousel-track" id="carouselTrack">
+              <div class="carousel-slide"><img src="bts.jpeg" alt="Beyond the Spotlight"></div>
+              <div class="carousel-slide"><img src="rim.jpeg" alt="Reborn: I Married His Nemesis"></div>
+              <div class="carousel-slide"><img src="yvm.jpeg" alt="You Versus Me"></div>
+              <div class="carousel-slide"><img src="lal.jpeg" alt="Lemons and Lemonade"></div>
+              <div class="carousel-slide">
+                <img src="evergreen-lane.jpeg" alt="The Secrets Of Evergreen Lane">
+                <span class="carousel-badge">Coming Soon</span>
+              </div>
+            </div>
           </div>
         </div>
         <p class="carousel-caption" id="carouselCaption">Beyond the Spotlight</p>
-        <div class="carousel-dots" id="carouselDots"></div>
       </div>
     </div>
   </section>
@@ -534,6 +738,23 @@
 
 </main>
 
+<div class="newsletter-popup" id="newsletterPopup" aria-hidden="true">
+  <div class="newsletter-popup-card" role="dialog" aria-modal="true" aria-labelledby="newsletterPopupTitle">
+    <button class="newsletter-popup-close" id="newsletterPopupClose" type="button" aria-label="Close newsletter sign-up">&times;</button>
+    <p class="section-eyebrow">Stay In The Loop</p>
+    <h2 id="newsletterPopupTitle">Join My Newsletter</h2>
+    <p class="newsletter-popup-copy">Be the first to hear about new books, cover reveals, release dates, and a little behind-the-scenes magic from Clara Joel.</p>
+    <form class="newsletter-popup-form" id="newsletterPopupForm" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+      <input type="hidden" name="subject" value="New newsletter signup — clarajoelbooks.com.ng">
+      <input type="email" name="email" placeholder="Your email address" aria-label="Your email address" required>
+      <button type="submit">Join the Newsletter</button>
+    </form>
+    <p class="newsletter-popup-status" id="newsletterPopupStatus" role="status" aria-live="polite"></p>
+    <p class="newsletter-popup-note">No spam — just Clara's news, when there's news to share.</p>
+  </div>
+</div>
+
 <footer>
   <div class="foot-name">Clara Joel</div>
   <p>© <span id="year"></span> Clara Joel · clarajoelbooks.com.ng</p>
@@ -541,15 +762,23 @@
 
 <script>
   const navToggle = document.getElementById('navToggle');
-  navToggle.addEventListener('click', () => {
-    const isOpen = document.body.classList.toggle('nav-open');
-    navToggle.setAttribute('aria-expanded', isOpen);
-  });
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.body.classList.remove('nav-open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
+  const menuClose = document.getElementById('menuClose');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const menuDrawer = document.getElementById('menuDrawer');
+  function setMenu(open){
+    document.body.classList.toggle('nav-open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    menuDrawer.setAttribute('aria-hidden', String(!open));
+    menuOverlay.setAttribute('aria-hidden', String(!open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    if(open) menuClose.focus(); else navToggle.focus();
+  }
+  navToggle.addEventListener('click', () => setMenu(!document.body.classList.contains('nav-open')));
+  menuClose.addEventListener('click', () => setMenu(false));
+  menuOverlay.addEventListener('click', () => setMenu(false));
+  document.querySelectorAll('.drawer-links a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (event) => {
+    if(event.key === 'Escape' && document.body.classList.contains('nav-open')) setMenu(false);
   });
 
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -568,6 +797,22 @@
   } else {
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
   }
+
+  const searchToggle = document.getElementById('searchToggle');
+  const searchPanel = document.getElementById('searchPanel');
+  const searchClose = document.getElementById('searchClose');
+  const siteSearch = document.getElementById('siteSearch');
+
+  function setSearch(open){
+    document.body.classList.toggle('search-open', open);
+    searchPanel.setAttribute('aria-hidden', String(!open));
+    if (open) setTimeout(() => siteSearch.focus(), 150);
+  }
+  searchToggle.addEventListener('click', () => setSearch(!document.body.classList.contains('search-open')));
+  searchClose.addEventListener('click', () => setSearch(false));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setSearch(false);
+  });
 
   const form = document.getElementById('signupForm');
   const status = document.getElementById('formStatus');
@@ -589,44 +834,86 @@
     }
   });
 
+
+  const newsletterPopup = document.getElementById('newsletterPopup');
+  const newsletterPopupClose = document.getElementById('newsletterPopupClose');
+  const newsletterPopupForm = document.getElementById('newsletterPopupForm');
+  const newsletterPopupStatus = document.getElementById('newsletterPopupStatus');
+  const newsletterPopupKey = 'claraJoelNewsletterDismissedUntil';
+
+  function closeNewsletterPopup(){
+    newsletterPopup.classList.remove('is-open');
+    newsletterPopup.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    try { localStorage.setItem(newsletterPopupKey, String(Date.now() + 14 * 24 * 60 * 60 * 1000)); } catch(e) {}
+  }
+  function openNewsletterPopup(){
+    newsletterPopup.classList.add('is-open');
+    newsletterPopup.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  newsletterPopupClose.addEventListener('click', closeNewsletterPopup);
+  newsletterPopup.addEventListener('click', (e) => { if(e.target === newsletterPopup) closeNewsletterPopup(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && newsletterPopup.classList.contains('is-open')) closeNewsletterPopup(); });
+
+  try {
+    const dismissedUntil = Number(localStorage.getItem(newsletterPopupKey) || 0);
+    if (Date.now() >= dismissedUntil) setTimeout(openNewsletterPopup, 2500);
+  } catch(e) {
+    setTimeout(openNewsletterPopup, 2500);
+  }
+
+  newsletterPopupForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    newsletterPopupStatus.textContent = 'Joining...';
+    const data = new FormData(newsletterPopupForm);
+    try {
+      const res = await fetch(newsletterPopupForm.action, { method:'POST', body:data });
+      const result = await res.json();
+      if(result.success){
+        newsletterPopupStatus.textContent = "You're in — thank you!";
+        newsletterPopupForm.reset();
+        setTimeout(closeNewsletterPopup, 900);
+      } else { newsletterPopupStatus.textContent = 'Something went wrong. Please try again.'; }
+    } catch(err) { newsletterPopupStatus.textContent = 'Something went wrong. Please try again.'; }
+  });
+
   const slides = [
     { title: 'Beyond the Spotlight' },
     { title: 'Reborn: I Married His Nemesis' },
     { title: 'You Versus Me' },
-    { title: 'Lemons and Lemonade' }
+    { title: 'Lemons and Lemonade' },
+    { title: 'The Secrets Of Evergreen Lane' }
   ];
   const track = document.getElementById('carouselTrack');
   const caption = document.getElementById('carouselCaption');
-  const dotsWrap = document.getElementById('carouselDots');
   let current = 0;
   let timer;
 
-  slides.forEach((s, i) => {
-    const dot = document.createElement('button');
-    dot.setAttribute('aria-label', 'Show ' + s.title);
-    if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => goTo(i));
-    dotsWrap.appendChild(dot);
-  });
+  function getStep(){
+    const firstSlide = track.querySelector('.carousel-slide');
+    if (!firstSlide) return 0;
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    return firstSlide.getBoundingClientRect().width + gap;
+  }
 
   function goTo(index){
     current = (index + slides.length) % slides.length;
-    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    const visualIndex = Math.min(current, Math.max(0, slides.length - 3));
+    track.style.transform = 'translateX(-' + (visualIndex * getStep()) + 'px)';
     caption.textContent = slides[current].title;
-    [...dotsWrap.children].forEach((d, i) => d.classList.toggle('active', i === current));
   }
 
   function startAutoplay(){
     if (prefersReduced) return;
-    timer = setInterval(() => goTo(current + 1), 4000);
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), 4500);
   }
-  function stopAutoplay(){ clearInterval(timer); }
 
-  const carouselEl = document.getElementById('carousel');
-  carouselEl.addEventListener('mouseenter', stopAutoplay);
-  carouselEl.addEventListener('mouseleave', startAutoplay);
-
+  window.addEventListener('resize', () => goTo(current));
+  goTo(0);
   startAutoplay();
+
 </script>
 
 </body>
