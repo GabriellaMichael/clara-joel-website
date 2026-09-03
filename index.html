@@ -298,13 +298,13 @@
   }
 
   .carousel-wrap{
-    max-width:1180px;
+    max-width:1240px;
     margin:86px auto 0;
     position:relative;
   }
   .carousel-heading{
     text-align:center;
-    margin-bottom:38px;
+    margin-bottom:42px;
   }
   .carousel-heading p{
     margin:0 0 10px;
@@ -316,67 +316,68 @@
   .carousel-heading h3{
     margin:0;
     font-family:var(--font-display);
-    font-size:clamp(32px,4.5vw,48px);
+    font-size:clamp(34px,5vw,54px);
     font-weight:600;
     color:var(--text-dark);
   }
+
+  .carousel-library-link{ display:block; color:inherit; text-decoration:none; }
+  .carousel-library-link:hover h3,.carousel-library-link:focus-visible h3{ color:var(--rose-deep); }
+
   .carousel-shell{
     position:relative;
-    padding:0;
-  }
-  .carousel{
-    position:relative;
     overflow:hidden;
-    background:transparent;
-    border:none;
-    padding:10px 0 24px;
+    padding:34px 0 42px;
+    background:
+      radial-gradient(circle at 18% 30%, rgba(201,161,90,.15), transparent 28%),
+      radial-gradient(circle at 82% 70%, rgba(74,33,67,.28), transparent 34%),
+      linear-gradient(135deg, var(--charcoal), var(--blush) 52%, var(--cream-alt));
+    border:1px solid var(--rose-line);
+    box-shadow:inset 0 0 70px rgba(0,0,0,.18), 0 22px 55px rgba(0,0,0,.16);
+  }
+  .carousel-shell::before, .carousel-shell::after{
+    content:'✦'; position:absolute; color:rgba(221,185,111,.42); font-family:var(--font-display); pointer-events:none;
+  }
+  .carousel-shell::before{ top:18px; left:4%; font-size:24px; }
+  .carousel-shell::after{ bottom:18px; right:5%; font-size:18px; }
+  .carousel{
+    position:relative; overflow:hidden; background:transparent; border:none; padding:0 5%;
   }
   .carousel-track{
-    display:flex;
-    gap:30px;
-    transition:transform .75s cubic-bezier(.22,.61,.36,1);
+    display:flex; gap:34px;
+    transition:transform 1.7s cubic-bezier(.22,.61,.36,1);
     will-change:transform;
   }
   .carousel-slide{
-    flex:0 0 31.5%;
+    flex:0 0 34%;
     aspect-ratio:2/3;
-    position:relative;
-    overflow:hidden;
-    border:1px solid var(--rose-line);
-    background:var(--cream-alt);
-    box-shadow:0 18px 42px rgba(0,0,0,.28);
-    transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    position:relative; overflow:hidden;
+    border:1px solid rgba(221,185,111,.35);
+    background:var(--charcoal);
+    box-shadow:0 24px 55px rgba(0,0,0,.42);
   }
-  .carousel-slide:hover{
-    transform:translateY(-7px);
-    border-color:var(--gold);
-    box-shadow:0 24px 48px var(--shadow);
-  }
-  .carousel-slide img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-  }
+  .carousel-slide img{ width:100%; height:100%; object-fit:cover; display:block; }
   .carousel-badge{
-    position:absolute;
-    left:16px;
-    bottom:16px;
-    padding:8px 12px;
-    background:rgba(45,19,39,.9);
-    color:var(--cream);
-    font-size:11px;
-    letter-spacing:.14em;
-    text-transform:uppercase;
+    position:absolute; left:16px; bottom:16px; padding:8px 12px;
+    background:rgba(45,19,39,.9); color:var(--text-dark);
+    font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+    border:1px solid rgba(221,185,111,.45);
   }
   .carousel-caption{
-    text-align:center;
-    margin:22px auto 0;
-    font-family:var(--font-display);
-    font-size:21px;
-    color:var(--text-dark);
-    min-height:31px;
+    text-align:center; margin:24px auto 0; font-family:var(--font-display);
+    font-size:23px; color:var(--text-dark); min-height:31px;
   }
+
+  .meet-clara-title{
+    position:relative; display:inline-block; margin:0 0 14px !important;
+    font-size:clamp(46px,6vw,72px); line-height:.95; letter-spacing:-.025em;
+    font-style:italic; font-weight:500;
+  }
+  .meet-clara-title::after{
+    content:'✦'; position:absolute; right:-30px; top:-14px; font-size:18px;
+    color:var(--gold); font-style:normal;
+  }
+
 
 
   .arc-callout{
@@ -450,6 +451,14 @@
     .newsletter-popup-form button{ width:100%; }
   }
 
+
+  .search-suggestions{ margin-top:22px; }
+  .search-suggestions > p{ margin:0 0 12px; color:var(--rose-deep); font-size:11px; text-transform:uppercase; letter-spacing:.2em; }
+  .suggestion-list{ display:flex; flex-wrap:wrap; gap:10px; }
+  .suggestion-list a{ text-decoration:none; border:1px solid var(--rose-line); color:var(--text-dim); padding:9px 14px; font-size:14px; transition:border-color .2s ease,color .2s ease,background .2s ease; }
+  .suggestion-list a:hover,.suggestion-list a:focus-visible{ border-color:var(--gold); color:var(--text-dark); background:rgba(201,161,90,.08); }
+  .journey-name{ font-family:var(--font-display); font-size:clamp(46px,7vw,76px); font-style:italic; color:var(--rose-deep); line-height:.95; margin:0 0 10px; }
+
   .connect-list{
     display:flex; justify-content:center; flex-wrap:wrap; gap:14px; margin-top:38px;
   }
@@ -507,9 +516,6 @@
       <button class="nav-icon" id="searchToggle" aria-label="Search" type="button">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"></circle><path d="M16 16l5 5"></path></svg>
       </button>
-      <a class="nav-icon" href="#books" aria-label="Shopping bag">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 8.5h13l1 11h-15z"></path><path d="M9 9V6.5a3 3 0 0 1 6 0V9"></path></svg>
-      </a>
     </div>
 
     <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
@@ -520,12 +526,14 @@
       </div>
       <nav aria-label="Main navigation">
         <ul class="drawer-links">
-          <li><a href="#top">Home</a></li>
-          <li><a href="#about">About Clara</a></li>
-          <li><a href="#books">Books</a></li>
-          <li><a href="#arc">ARC Team</a></li>
-          <li><a href="#newsletter">Newsletter</a></li>
-          <li><a href="#connect">Connect</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="library.html">Books</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="faq.html">FAQ &amp; Contact</a></li>
+          <li><a href="newsletter.html">Newsletter</a></li>
+          <li><a href="giveaway.html">Giveaway</a></li>
         </ul>
       </nav>
       <p class="menu-note">Stories, secrets, impossible love stories, and a little holiday chaos.</p>
@@ -545,6 +553,18 @@
       <input id="siteSearch" type="search" placeholder="Search books, Clara Joel, and more…" autocomplete="off">
       <button id="searchClose" type="button" aria-label="Close search">×</button>
     </div>
+    <div class="search-suggestions" id="searchSuggestions" aria-label="Suggested searches">
+      <p>Suggested</p>
+      <div class="suggestion-list">
+        <a href="library.html">Explore the Library</a>
+        <a href="faq.html">FAQ &amp; Contact</a>
+        <a href="arc.html">ARC Program</a>
+        <a href="giveaway.html">Giveaway</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact</a>
+        <a href="newsletter.html">Newsletter</a>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -557,7 +577,7 @@
         <p class="eyebrow">A Christmas Mystery</p>
         <h1>This Christmas,<br><em>something big is coming.</em></h1>
         <p class="hero-subhead">Some secrets are meant to stay hidden. But Christmas has a way of bringing them to light. Two girls, two secrets are on the line.</p>
-        <a class="hero-cta" href="#books">Coming Soon · December 24th</a>
+        <a class="hero-cta" href="#evergreen-lane">Coming Soon · December 24th</a>
       </div>
 
       <div class="hero-book-wrap">
@@ -575,8 +595,8 @@
           <img src="clara2.jpeg" alt="Clara Joel">
         </div>
         <div class="about-copy">
-          <p class="about-eyebrow">Meet the Author</p>
-          <h2 style="margin-bottom:14px;">Meet Clara Joel</h2>
+          <p class="about-eyebrow">Author Journey</p>
+          <h2 class="meet-clara-title">Clara Joel</h2>
           <p class="about-intro">Writer of swoony YA romance, werewolf romance, and Christmas mysteries. Collector of happy endings. Lover of impossible love stories, moonlit mayhem, and a little holiday chaos.</p>
           <p>Clara Joel is a Nigerian author who writes young adult romance, fantasy, and mystery novels, with a particular love for Christmas mystery series. Her stories are filled with romance, intriguing plotlines, unexpected twists, and memorable characters that draw readers into captivating worlds. From heartfelt romances to fantastical adventures and mysteries that keep readers guessing, Clara enjoys creating stories that offer an escape while keeping readers turning the pages.</p>
           <p>When she isn't writing, Clara enjoys getting lost in a good book, designing book covers, or spending time in nature. Her stories can be found across various online reading platforms, giving readers the opportunity to explore her collection and discover their next favorite story.</p>
@@ -650,7 +670,7 @@
           </div>
         </article>
 
-        <article class="book-card">
+        <article class="book-card" id="evergreen-lane">
           <div class="book-cover"><img src="evergreen-lane.jpeg" alt="The Secrets Of Evergreen Lane book cover"></div>
           <div class="book-body">
             <p class="book-series">First book in the Evergreen Lane Christmas Series</p>
@@ -667,8 +687,8 @@
 
       <div class="carousel-wrap reveal">
         <div class="carousel-heading">
-          <p>Explore the Library</p>
-          <h3>Explore the Books</h3>
+          <a class="carousel-library-link" href="library.html"><p>Explore the Library</p>
+          <h3>Explore the Books</h3></a>
         </div>
         <div class="carousel-shell">
           <div class="carousel" id="carousel">
@@ -810,6 +830,12 @@
   }
   searchToggle.addEventListener('click', () => setSearch(!document.body.classList.contains('search-open')));
   searchClose.addEventListener('click', () => setSearch(false));
+  const suggestionLinks = Array.from(document.querySelectorAll('#searchSuggestions a'));
+  siteSearch.addEventListener('input', () => {
+    const q = siteSearch.value.trim().toLowerCase();
+    suggestionLinks.forEach(link => { link.hidden = q && !link.textContent.toLowerCase().includes(q); });
+  });
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') setSearch(false);
   });
@@ -907,7 +933,7 @@
   function startAutoplay(){
     if (prefersReduced) return;
     clearInterval(timer);
-    timer = setInterval(() => goTo(current + 1), 4500);
+    timer = setInterval(() => goTo(current + 1), 8000);
   }
 
   window.addEventListener('resize', () => goTo(current));
