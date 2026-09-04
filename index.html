@@ -338,36 +338,35 @@
   .carousel-shell{
     position:relative;
     overflow:hidden;
-    padding:34px 0 42px;
-    background:
-      radial-gradient(circle at 18% 30%, rgba(201,161,90,.15), transparent 28%),
-      radial-gradient(circle at 82% 70%, rgba(74,33,67,.28), transparent 34%),
-      linear-gradient(135deg, var(--charcoal), var(--blush) 52%, var(--cream-alt));
-    border:1px solid var(--rose-line);
-    box-shadow:inset 0 0 70px rgba(0,0,0,.18), 0 22px 55px rgba(0,0,0,.16);
+    padding:12px 0 24px;
+    background:transparent;
+    border:none;
+    box-shadow:none;
   }
-  .carousel-shell::before, .carousel-shell::after{
-    content:'✦'; position:absolute; color:rgba(221,185,111,.42); font-family:var(--font-display); pointer-events:none;
-  }
-  .carousel-shell::before{ top:18px; left:4%; font-size:24px; }
-  .carousel-shell::after{ bottom:18px; right:5%; font-size:18px; }
+  .carousel-shell::before, .carousel-shell::after{ display:none; }
   .carousel{
-    position:relative; overflow:hidden; background:transparent; border:none; padding:0 5%;
+    position:relative; overflow:hidden; background:transparent; border:none; padding:0;
   }
   .carousel-track{
-    display:flex; gap:34px;
-    transition:transform 1.7s cubic-bezier(.22,.61,.36,1);
+    display:flex; gap:28px;
+    width:max-content;
+    animation:libraryMarquee 46s linear infinite;
     will-change:transform;
   }
+  .carousel:hover .carousel-track{ animation-play-state:running; }
   .carousel-slide{
-    flex:0 0 34%;
+    flex:0 0 clamp(190px,22vw,300px);
     aspect-ratio:2/3;
     position:relative; overflow:hidden;
-    border:1px solid rgba(221,185,111,.35);
-    background:var(--charcoal);
-    box-shadow:0 24px 55px rgba(0,0,0,.42);
+    border:none;
+    background:transparent;
+    box-shadow:0 18px 40px rgba(0,0,0,.28);
   }
   .carousel-slide img{ width:100%; height:100%; object-fit:cover; display:block; }
+  @keyframes libraryMarquee{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(calc(-50% - 14px)); }
+  }
   .carousel-badge{
     position:absolute; left:16px; bottom:16px; padding:8px 12px;
     background:rgba(45,19,39,.9); color:var(--text-dark);
@@ -380,15 +379,10 @@
   .books-showcase{ display:grid; grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr); gap:58px; align-items:start; }
   .books-showcase .carousel-wrap{ margin:0; max-width:none; }
   .books-showcase .carousel-heading{ margin-bottom:28px; }
-  .books-showcase .carousel-shell{ padding:28px 0 34px; }
-  .books-showcase .carousel-track{ gap:24px; }
-  .books-showcase .carousel-slide{ flex-basis:82%; }
-  .books-showcase .carousel-caption{ font-size:21px; }
-  @media(max-width:1000px){ .books-showcase{ grid-template-columns:1fr; gap:50px; } .books-showcase .carousel-wrap{ max-width:760px; margin:0 auto; width:100%; } .books-showcase .carousel-slide{ flex-basis:48%; } }
-  .carousel-caption{
-    text-align:center; margin:24px auto 0; font-family:var(--font-display);
-    font-size:23px; color:var(--text-dark); min-height:31px;
-  }
+  .books-showcase .carousel-shell{ padding:10px 0 20px; }
+  .books-showcase .carousel-track{ gap:28px; }
+  .books-showcase .carousel-slide{ flex-basis:clamp(190px,22vw,300px); }
+  @media(max-width:1000px){ .books-showcase{ grid-template-columns:1fr; gap:50px; } .books-showcase .carousel-wrap{ max-width:760px; margin:0 auto; width:100%; } .books-showcase .carousel-slide{ flex-basis:clamp(180px,34vw,250px); } }
 
   .meet-clara-title{
     position:relative; display:inline-block; margin:0 0 18px !important;
@@ -398,10 +392,6 @@
   .meet-clara-title .name-accent{
     color:var(--gold); font-family:var(--font-display); font-style:italic; font-weight:500;
     letter-spacing:-.02em;
-  }
-  .meet-clara-title::after{
-    content:'✦'; position:absolute; right:-30px; top:-14px; font-size:18px;
-    color:var(--gold); font-style:normal;
   }
 
 
@@ -479,6 +469,11 @@
 
 
   .search-suggestions{ margin-top:22px; }
+  .search-results{ margin-top:18px; display:grid; gap:10px; max-height:360px; overflow:auto; }
+  .search-result{ display:block; padding:14px 16px; border-left:1px solid var(--gold); background:rgba(45,19,39,.45); text-decoration:none; }
+  .search-result strong{ color:var(--gold-bright); display:block; font-family:var(--font-display); font-size:20px; }
+  .search-result span{ color:var(--text-dim); font-size:13px; }
+  .search-empty{ color:var(--text-dim); font-size:14px; padding:10px 0; }
   .search-suggestions > p{ margin:0 0 12px; color:var(--rose-deep); font-size:11px; text-transform:uppercase; letter-spacing:.2em; }
   .suggestion-list{ display:flex; flex-wrap:wrap; gap:10px; }
   .suggestion-list a{ text-decoration:none; border:1px solid var(--rose-line); color:var(--text-dim); padding:9px 14px; font-size:14px; transition:border-color .2s ease,color .2s ease,background .2s ease; }
@@ -555,6 +550,7 @@
       </div>
       <nav aria-label="Main navigation">
         <ul class="drawer-links">
+          <li><a href="index.html"><span>Home</span><small>Return to Clara Joel’s home page</small></a></li>
           <li><a href="library.html"><span>Explore The Library</span><small>View all books and discover my stories</small></a></li>
           <li><a href="about.html"><span>About the Author</span><small>Learn more about Clara Joel</small></a></li>
           <li><a href="arc.html"><span>ARC Program</span><small>Join the advance reader community</small></a></li>
@@ -593,7 +589,7 @@
         <a href="contact.html">Contact</a>
         <a href="newsletter.html">Newsletter</a>
       </div>
-    </div>
+        <div class="search-results" id="searchResults" aria-live="polite"></div>
   </div>
 </div>
 
@@ -629,7 +625,7 @@
           <p class="about-intro">Writer of swoony YA romance, werewolf romance, and Christmas mysteries. Collector of happy endings. Lover of impossible love stories, moonlit mayhem, and a little holiday chaos.</p>
           <p>Clara Joel is a Nigerian author who writes young adult romance, fantasy, and mystery novels, with a particular love for Christmas mystery series. Her stories are filled with romance, intriguing plotlines, unexpected twists, and memorable characters that draw readers into captivating worlds. From heartfelt romances to fantastical adventures and mysteries that keep readers guessing, Clara enjoys creating stories that offer an escape while keeping readers turning the pages.</p>
           <p>When she isn't writing, Clara enjoys getting lost in a good book, designing book covers, or spending time in nature. Her stories can be found across various online reading platforms, giving readers the opportunity to explore her collection and discover their next favorite story.</p>
-          <p>Dive into Clara Joel's world of romance, fantasy, and mystery, and let her stories take you somewhere unforgettable, one page at a time.</p>
+          <p>Dive into Clara Joel's world of romance, fantasy, and mystery, and let her stories take you somewhere unforgettable, one page at a time—turning the pages.</p>
           <a class="about-full-story" href="about.html">Get the Full Story <span aria-hidden="true">→</span></a>
         </div>
       </div>
@@ -728,14 +724,15 @@
               <div class="carousel-slide"><img src="rim.jpeg" alt="Reborn: I Married His Nemesis"></div>
               <div class="carousel-slide"><img src="yvm.jpeg" alt="You Versus Me"></div>
               <div class="carousel-slide"><img src="lal.jpeg" alt="Lemons and Lemonade"></div>
-              <div class="carousel-slide">
-                <img src="evergreen-lane.jpeg" alt="The Secrets Of Evergreen Lane">
-                <span class="carousel-badge">Coming Soon</span>
-              </div>
+              <div class="carousel-slide"><img src="evergreen-lane.jpeg" alt="The Secrets Of Evergreen Lane"></div>
+              <div class="carousel-slide"><img src="bts.jpeg" alt="Beyond the Spotlight"></div>
+              <div class="carousel-slide"><img src="rim.jpeg" alt="Reborn: I Married His Nemesis"></div>
+              <div class="carousel-slide"><img src="yvm.jpeg" alt="You Versus Me"></div>
+              <div class="carousel-slide"><img src="lal.jpeg" alt="Lemons and Lemonade"></div>
+              <div class="carousel-slide"><img src="evergreen-lane.jpeg" alt="The Secrets Of Evergreen Lane"></div>
             </div>
           </div>
         </div>
-        <p class="carousel-caption" id="carouselCaption">Beyond the Spotlight</p>
       </div>
       </div>
     </div>
@@ -863,9 +860,34 @@
   searchToggle.addEventListener('click', () => setSearch(!document.body.classList.contains('search-open')));
   searchClose.addEventListener('click', () => setSearch(false));
   const suggestionLinks = Array.from(document.querySelectorAll('#searchSuggestions a'));
+  const searchResults = document.getElementById('searchResults');
+  const searchIndex = [
+    {title:'Home', url:'index.html', text:'Clara Joel author storyteller YA romance fantasy mystery Christmas mysteries'},
+    {title:'About Clara Joel', url:'about.html', text:'About the author Clara Joel Nigerian author romance fantasy mystery writing journey'},
+    {title:'Explore The Library', url:'library.html', text:'all books stories library'},
+    {title:'Beyond the Spotlight', url:'library.html#beyond-the-spotlight', text:'Holiday Spark enemies to lover holiday romance singer Christmas concert Tessa Wayne'},
+    {title:'Reborn: I Married His Nemesis', url:'library.html#reborn', text:'Alice Brent Devon Shaun hockey rival revenge marriage'},
+    {title:'You Versus Me', url:'library.html#you-versus-me', text:'Zoey Hughes Liam Crawford Eastview High basketball enemies romance'},
+    {title:'Lemons and Lemonade', url:'library.html#lemons-and-lemonade', text:'Roseline Evans mother father marriage children dreams'},
+    {title:'The Secrets Of Evergreen Lane', url:'library.html#evergreen-lane', text:'Kali Andre Alison Newton Justin Blake Christmas mystery secrets'},
+    {title:'ARC Program', url:'arc.html', text:'advance reader community ARC beta readers'},
+    {title:'Giveaway', url:'giveaway.html', text:'current giveaways'},
+    {title:'Events', url:'events.html', text:'upcoming appearances events'},
+    {title:'Newsletter', url:'newsletter.html', text:'new book news updates cover reveals release dates'},
+    {title:'FAQ', url:'faq.html', text:'frequently asked questions release dates books'},
+    {title:'Contact', url:'contact.html', text:'get in touch email social contact'}
+  ];
+  function renderSearch(q){
+    if(!searchResults) return;
+    const query=q.trim().toLowerCase();
+    if(!query){ searchResults.innerHTML=''; return; }
+    const hits=searchIndex.filter(item => (item.title+' '+item.text).toLowerCase().includes(query));
+    searchResults.innerHTML=hits.length ? hits.map(item=>`<a class="search-result" href="${item.url}"><strong>${item.title}</strong><span>${item.text}</span></a>`).join('') : '<div class="search-empty">No results found. Try a book title, character, genre, or page name.</div>';
+  }
   siteSearch.addEventListener('input', () => {
     const q = siteSearch.value.trim().toLowerCase();
     suggestionLinks.forEach(link => { link.hidden = q && !link.textContent.toLowerCase().includes(q); });
+    renderSearch(q);
   });
 
   document.addEventListener('keydown', (e) => {
@@ -936,41 +958,7 @@
     } catch(err) { newsletterPopupStatus.textContent = 'Something went wrong. Please try again.'; }
   });
 
-  const slides = [
-    { title: 'Beyond the Spotlight' },
-    { title: 'Reborn: I Married His Nemesis' },
-    { title: 'You Versus Me' },
-    { title: 'Lemons and Lemonade' },
-    { title: 'The Secrets Of Evergreen Lane' }
-  ];
-  const track = document.getElementById('carouselTrack');
-  const caption = document.getElementById('carouselCaption');
-  let current = 0;
-  let timer;
 
-  function getStep(){
-    const firstSlide = track.querySelector('.carousel-slide');
-    if (!firstSlide) return 0;
-    const gap = parseFloat(getComputedStyle(track).gap) || 0;
-    return firstSlide.getBoundingClientRect().width + gap;
-  }
-
-  function goTo(index){
-    current = (index + slides.length) % slides.length;
-    const visualIndex = current;
-    track.style.transform = 'translateX(-' + (visualIndex * getStep()) + 'px)';
-    caption.textContent = slides[current].title;
-  }
-
-  function startAutoplay(){
-    if (prefersReduced) return;
-    clearInterval(timer);
-    timer = setInterval(() => goTo(current + 1), 8000);
-  }
-
-  window.addEventListener('resize', () => goTo(current));
-  goTo(0);
-  startAutoplay();
 
 </script>
 
