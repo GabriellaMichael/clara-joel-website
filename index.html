@@ -95,30 +95,33 @@
   body.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
 
   .menu-overlay{
-    position:fixed; inset:0; background:rgba(20,8,18,.58); z-index:55;
+    position:fixed; inset:0; background:rgba(20,8,18,.72); z-index:55;
     opacity:0; visibility:hidden; transition:opacity .3s ease, visibility .3s ease;
   }
   .menu-drawer{
-    position:fixed; top:0; left:0; bottom:0; width:min(430px,88vw);
-    background:linear-gradient(160deg,var(--cream) 0%,var(--charcoal) 100%);
-    border-right:1px solid var(--rose-line); z-index:60;
-    padding:34px 34px 40px; transform:translateX(-105%);
-    transition:transform .38s cubic-bezier(.22,.61,.36,1);
-    box-shadow:18px 0 50px rgba(0,0,0,.25); overflow-y:auto;
+    position:fixed; top:0; left:0; bottom:0; width:min(620px,92vw);
+    background:#24151F; border-right:1px solid #6E4D5C; z-index:60;
+    padding:48px 56px 46px; transform:translateX(-105%);
+    transition:transform .42s cubic-bezier(.22,.61,.36,1);
+    box-shadow:24px 0 70px rgba(0,0,0,.38); overflow-y:auto;
   }
   body.nav-open .menu-overlay{ opacity:1; visibility:visible; }
   body.nav-open .menu-drawer{ transform:translateX(0); }
-  .menu-drawer-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:55px; }
-  .menu-brand{ font-family:var(--font-display); font-size:25px; color:var(--rose-deep); letter-spacing:.08em; }
-  .menu-close{ border:0; background:none; color:var(--rose-deep); font-size:32px; line-height:1; cursor:pointer; padding:4px; }
+  .menu-drawer-header{ display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:48px; }
+  .menu-brand-wrap{ display:flex; flex-direction:column; gap:5px; }
+  .menu-brand{ font-family:var(--font-body); font-size:31px; color:#F4EBDD; letter-spacing:.16em; font-weight:500; }
+  .menu-tagline{ margin:0; color:#C4A052; font-size:13px; letter-spacing:.11em; }
+  .menu-close{ border:0; background:none; color:#C4A052; font-size:34px; line-height:1; cursor:pointer; padding:0 2px; }
   .drawer-links{ list-style:none; padding:0; margin:0; }
-  .drawer-links li{ border-bottom:1px solid rgba(221,185,111,.22); }
-  .drawer-links a{ display:flex; align-items:center; justify-content:space-between; padding:18px 0; color:var(--text-dark); text-decoration:none; font-family:var(--font-display); font-size:24px; letter-spacing:.03em; transition:color .2s ease, padding-left .2s ease; }
-  .drawer-links a::after{ content:'↗'; font-family:var(--font-body); font-size:16px; color:var(--gold); opacity:.8; }
-  .drawer-links a:hover,.drawer-links a:focus-visible{ color:var(--rose-deep); padding-left:6px; }
-  .menu-note{ margin-top:55px; color:var(--text-dim); font-size:13px; line-height:1.7; max-width:290px; }
-  .menu-socials{ display:flex; gap:16px; flex-wrap:wrap; margin-top:20px; }
-  .menu-socials a{ color:var(--rose-deep); text-decoration:none; font-size:12px; letter-spacing:.1em; text-transform:uppercase; }
+  .drawer-links li{ border-bottom:1px solid #6E4D5C; }
+  .drawer-links a{ display:block; position:relative; padding:20px 0 19px 0; color:#F4EBDD; text-decoration:none; font-family:var(--font-body); font-size:27px; line-height:1.15; letter-spacing:.015em; transition:color .2s ease, padding-left .2s ease; }
+  .drawer-links a::after{ content:'›'; position:absolute; right:2px; top:50%; transform:translateY(-50%); font-family:var(--font-body); font-size:25px; color:#C4A052; opacity:.8; }
+  .drawer-links a:hover,.drawer-links a:focus-visible{ color:#C4A052; padding-left:14px; outline:none; }
+  .drawer-links a::before{ content:''; position:absolute; left:0; top:15px; bottom:15px; width:1px; background:#C4A052; transform:scaleY(0); transform-origin:center; transition:transform .2s ease; }
+  .drawer-links a:hover::before,.drawer-links a:focus-visible::before{ transform:scaleY(1); }
+  .menu-note{ margin-top:38px; color:#F4EBDD; opacity:.72; font-size:13px; line-height:1.7; max-width:360px; }
+  .menu-socials{ display:flex; gap:20px; flex-wrap:wrap; margin-top:20px; }
+  .menu-socials a{ color:#C4A052; text-decoration:none; font-size:11px; letter-spacing:.13em; text-transform:uppercase; }
 
   .ornament{ display:flex; justify-content:center; margin:28px 0; }
   .ornament svg{ width:220px; height:34px; }
@@ -207,7 +210,7 @@
   .hero-book-note{ margin:18px 0 0; color:var(--text-dim); font-size:13px; letter-spacing:.12em; text-transform:uppercase; }
   .hero-glow{ position:absolute; inset:0; pointer-events:none; background-image:radial-gradient(rgba(243,230,216,.14) 1px, transparent 1px); background-size:42px 42px; mask-image:linear-gradient(to bottom, black, transparent 85%); }
 
-  .about-eyebrow{ margin:0 0 8px; color:var(--rose-deep); font-size:12px; text-transform:uppercase; letter-spacing:.28em; }
+  .about-eyebrow{ margin:0 0 8px; color:var(--gold); font-size:12px; text-transform:uppercase; letter-spacing:.28em; }
   .about-intro{ font-family:var(--font-display); font-size:25px !important; line-height:1.3; color:var(--text-dark) !important; }
 
   section{ padding:110px 0; position:relative; }
@@ -239,6 +242,14 @@
   }
   .about-photo-frame img{ width:100%; filter:saturate(0.96) contrast(1.02); }
   .about-copy p{ color:var(--text-dim); font-size:19px; }
+  .about-full-story{
+    display:inline-flex; align-items:center; gap:12px; margin-top:8px;
+    color:var(--text-dark); background:var(--cream);
+    padding:11px 0 7px; border-bottom:1px solid var(--gold);
+    text-decoration:none; text-transform:uppercase; letter-spacing:.14em; font-size:11px;
+    font-weight:600; transition:color .25s ease, border-color .25s ease, transform .25s ease;
+  }
+  .about-full-story:hover,.about-full-story:focus-visible{ color:var(--gold-bright); border-bottom-color:var(--gold-bright); transform:translateX(3px); }
 
   @media (max-width: 760px){
     .about-grid{ grid-template-columns:1fr; gap:36px; }
@@ -363,15 +374,30 @@
     font-size:11px; letter-spacing:.14em; text-transform:uppercase;
     border:1px solid rgba(221,185,111,.45);
   }
+
+  .drawer-links a small{ display:block; margin-top:7px; color:#F4EBDD; opacity:.62; font-family:var(--font-body); font-size:13px; line-height:1.45; letter-spacing:.02em; transition:color .2s ease, opacity .2s ease; }
+  .drawer-links a:hover small,.drawer-links a:focus-visible small{ color:#F4EBDD; opacity:.82; }
+  .books-showcase{ display:grid; grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr); gap:58px; align-items:start; }
+  .books-showcase .carousel-wrap{ margin:0; max-width:none; }
+  .books-showcase .carousel-heading{ margin-bottom:28px; }
+  .books-showcase .carousel-shell{ padding:28px 0 34px; }
+  .books-showcase .carousel-track{ gap:24px; }
+  .books-showcase .carousel-slide{ flex-basis:82%; }
+  .books-showcase .carousel-caption{ font-size:21px; }
+  @media(max-width:1000px){ .books-showcase{ grid-template-columns:1fr; gap:50px; } .books-showcase .carousel-wrap{ max-width:760px; margin:0 auto; width:100%; } .books-showcase .carousel-slide{ flex-basis:48%; } }
   .carousel-caption{
     text-align:center; margin:24px auto 0; font-family:var(--font-display);
     font-size:23px; color:var(--text-dark); min-height:31px;
   }
 
   .meet-clara-title{
-    position:relative; display:inline-block; margin:0 0 14px !important;
-    font-size:clamp(46px,6vw,72px); line-height:.95; letter-spacing:-.025em;
-    font-style:italic; font-weight:500;
+    position:relative; display:inline-block; margin:0 0 18px !important;
+    font-size:clamp(44px,5.5vw,68px); line-height:.98; letter-spacing:.01em;
+    font-style:normal; font-weight:600;
+  }
+  .meet-clara-title .name-accent{
+    color:var(--gold); font-family:var(--font-display); font-style:italic; font-weight:500;
+    letter-spacing:-.02em;
   }
   .meet-clara-title::after{
     content:'✦'; position:absolute; right:-30px; top:-14px; font-size:18px;
@@ -510,7 +536,7 @@
       <span></span><span></span><span></span>
     </button>
 
-    <a href="#top" class="nav-name">Clara Joel</a>
+    <a href="#top" class="nav-name">CLARA JOEL</a>
 
     <div class="nav-actions">
       <button class="nav-icon" id="searchToggle" aria-label="Search" type="button">
@@ -521,19 +547,22 @@
     <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
     <aside class="menu-drawer" id="menuDrawer" aria-label="Main navigation" aria-hidden="true">
       <div class="menu-drawer-header">
-        <div class="menu-brand">Clara Joel</div>
+        <div class="menu-brand-wrap">
+          <div class="menu-brand">CLARA JOEL</div>
+          <p class="menu-tagline">Author &amp; storyteller</p>
+        </div>
         <button class="menu-close" id="menuClose" type="button" aria-label="Close menu">×</button>
       </div>
       <nav aria-label="Main navigation">
         <ul class="drawer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="library.html">Books</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="faq.html">FAQ &amp; Contact</a></li>
-          <li><a href="newsletter.html">Newsletter</a></li>
-          <li><a href="giveaway.html">Giveaway</a></li>
+          <li><a href="library.html"><span>Explore The Library</span><small>View all books and discover my stories</small></a></li>
+          <li><a href="about.html"><span>About the Author</span><small>Learn more about Clara Joel</small></a></li>
+          <li><a href="arc.html"><span>ARC Program</span><small>Join the advance reader community</small></a></li>
+          <li><a href="giveaway.html"><span>Giveaway</span><small>Enter current giveaways</small></a></li>
+          <li><a href="events.html"><span>Events</span><small>Upcoming appearances and events</small></a></li>
+          <li><a href="newsletter.html"><span>Newsletter</span><small>Get new book news and updates</small></a></li>
+          <li><a href="faq.html"><span>FAQ</span><small>Frequently asked questions</small></a></li>
+          <li><a href="contact.html"><span>Contact</span><small>Get in touch</small></a></li>
         </ul>
       </nav>
       <p class="menu-note">Stories, secrets, impossible love stories, and a little holiday chaos.</p>
@@ -595,12 +624,13 @@
           <img src="clara2.jpeg" alt="Clara Joel">
         </div>
         <div class="about-copy">
-          <p class="about-eyebrow">Author Journey</p>
-          <h2 class="meet-clara-title">Clara Joel</h2>
+          <p class="about-eyebrow">Author</p>
+          <h2 class="meet-clara-title">Meet <span class="name-accent">Clara Joel</span></h2>
           <p class="about-intro">Writer of swoony YA romance, werewolf romance, and Christmas mysteries. Collector of happy endings. Lover of impossible love stories, moonlit mayhem, and a little holiday chaos.</p>
           <p>Clara Joel is a Nigerian author who writes young adult romance, fantasy, and mystery novels, with a particular love for Christmas mystery series. Her stories are filled with romance, intriguing plotlines, unexpected twists, and memorable characters that draw readers into captivating worlds. From heartfelt romances to fantastical adventures and mysteries that keep readers guessing, Clara enjoys creating stories that offer an escape while keeping readers turning the pages.</p>
           <p>When she isn't writing, Clara enjoys getting lost in a good book, designing book covers, or spending time in nature. Her stories can be found across various online reading platforms, giving readers the opportunity to explore her collection and discover their next favorite story.</p>
           <p>Dive into Clara Joel's world of romance, fantasy, and mystery, and let her stories take you somewhere unforgettable, one page at a time.</p>
+          <a class="about-full-story" href="about.html">Get the Full Story <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>
@@ -614,6 +644,7 @@
         <p class="section-sub">From stage-light romance to reborn revenge — a shelf that keeps growing.</p>
       </div>
 
+      <div class="books-showcase">
       <div class="books-grid reveal">
 
         <article class="book-card">
@@ -705,6 +736,7 @@
           </div>
         </div>
         <p class="carousel-caption" id="carouselCaption">Beyond the Spotlight</p>
+      </div>
       </div>
     </div>
   </section>
@@ -925,7 +957,7 @@
 
   function goTo(index){
     current = (index + slides.length) % slides.length;
-    const visualIndex = Math.min(current, Math.max(0, slides.length - 3));
+    const visualIndex = current;
     track.style.transform = 'translateX(-' + (visualIndex * getStep()) + 'px)';
     caption.textContent = slides[current].title;
   }
