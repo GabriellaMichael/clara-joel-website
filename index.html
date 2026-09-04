@@ -377,13 +377,12 @@
 
   .drawer-links a small{ display:block; margin-top:7px; color:#F4EBDD; opacity:.62; font-family:var(--font-body); font-size:13px; line-height:1.45; letter-spacing:.02em; transition:color .2s ease, opacity .2s ease; }
   .drawer-links a:hover small,.drawer-links a:focus-visible small{ color:#F4EBDD; opacity:.82; }
-  .books-showcase{ display:grid; grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr); gap:58px; align-items:start; }
-  .books-showcase .carousel-wrap{ margin:0; max-width:none; }
-  .books-showcase .carousel-heading{ margin-bottom:28px; }
-  .books-showcase .carousel-shell{ padding:10px 0 20px; }
+  .books-showcase{ display:block; width:100%; max-width:100%; }
+  .books-showcase .carousel-wrap{ margin:86px auto 0; max-width:1240px; width:100%; }
+  .books-showcase .carousel-heading{ margin-bottom:42px; }
+  .books-showcase .carousel-shell{ padding:12px 0 24px; }
   .books-showcase .carousel-track{ gap:28px; }
   .books-showcase .carousel-slide{ flex-basis:clamp(190px,22vw,300px); }
-  @media(max-width:1000px){ .books-showcase{ grid-template-columns:1fr; gap:50px; } .books-showcase .carousel-wrap{ max-width:760px; margin:0 auto; width:100%; } .books-showcase .carousel-slide{ flex-basis:clamp(180px,34vw,250px); } }
 
   .meet-clara-title{
     position:relative; display:inline-block; margin:0 0 18px !important;
@@ -560,6 +559,91 @@
   .hero h1 { font-size:clamp(42px, 12vw, 62px); }
   .hero-subhead { font-size:18px; }
 }
+
+<style id="clara-mobile-final-fix">
+/* Full-width mobile homepage + editorial book gallery + full-screen menu */
+html, body { width:100%; max-width:100%; overflow-x:hidden; }
+
+@media (max-width: 720px){
+  .site-nav { width:100%; left:0; right:0; }
+  .nav-inner { width:100%; max-width:none; min-height:74px; padding:14px 18px; }
+  .nav-toggle { flex:0 0 42px; z-index:1002; }
+  .nav-name { left:50%; font-size:22px; }
+  .nav-actions { flex:0 0 42px; justify-content:flex-end; }
+
+  /* The navigation drawer must cover the complete phone screen. */
+  .menu-overlay { z-index:1000; }
+  .menu-drawer {
+    left:0; right:0; top:0; bottom:0;
+    width:100vw; max-width:none; min-width:100vw;
+    border-right:0;
+    padding:30px 24px 36px;
+    z-index:1001;
+    transform:translate3d(-100%,0,0);
+  }
+  body.nav-open .menu-drawer { transform:translate3d(0,0,0); }
+  .menu-drawer-header { align-items:center; margin-bottom:34px; }
+  .menu-brand { font-size:30px; }
+  .menu-close { font-size:38px; width:44px; height:44px; display:grid; place-items:center; }
+  .drawer-links a { font-size:21px; padding:16px 28px 15px 0; }
+  .drawer-links a small { font-size:12px; }
+
+  /* Homepage hero is a single full-width mobile column. */
+  .hero { width:100%; padding:112px 0 72px; }
+  .hero-inner {
+    display:flex !important;
+    flex-direction:column;
+    width:100%; max-width:none;
+    padding:0 20px;
+    margin:0;
+    gap:42px;
+  }
+  .hero-copy { width:100%; max-width:650px; text-align:center; margin:0 auto; }
+  .hero h1 { font-size:clamp(42px,12vw,62px); }
+  .hero-subhead { max-width:590px; font-size:18px; margin-left:auto; margin-right:auto; }
+  .hero-book-wrap { width:min(310px,88vw); max-width:310px; margin:0 auto; justify-self:auto !important; }
+
+  /* New mobile "On the Shelf" layout: a clean two-column cover gallery. */
+  #books { width:100%; overflow:hidden; }
+  #books > .wrap { width:100%; max-width:none; padding-left:18px; padding-right:18px; }
+  #books .section-head { width:100%; max-width:640px; margin:0 auto 38px; }
+  #books .section-sub { max-width:430px; margin-left:auto; margin-right:auto; }
+  .books-showcase { display:block; width:100%; }
+  .books-grid {
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:28px 16px;
+    width:100%; max-width:none; margin:0;
+    opacity:1 !important; transform:none !important;
+  }
+  .book-card {
+    min-width:0;
+    background:none;
+    border:0;
+    box-shadow:none;
+    transform:none !important;
+    display:block;
+  }
+  .book-card:hover, .book-card:focus-within { border:0; box-shadow:none; }
+  .book-cover {
+    width:100%; aspect-ratio:2/3;
+    border:1px solid rgba(221,185,111,.48);
+    box-shadow:0 14px 28px rgba(0,0,0,.32);
+  }
+  .book-body { padding:11px 2px 0; display:block; }
+  .book-series, .book-teaser, .book-links { display:none; }
+  .book-title { font-size:19px; line-height:1.1; margin:0; }
+  .book-author { font-size:13px; margin:4px 0 0; }
+  .books-showcase .carousel-wrap { margin:62px auto 0; width:100%; max-width:none; }
+  .books-showcase .carousel-heading { margin-bottom:28px; }
+  .books-showcase .carousel-slide { flex-basis:180px; }
+}
+
+@media (max-width:390px){
+  #books > .wrap { padding-left:14px; padding-right:14px; }
+  .books-grid { gap:24px 12px; }
+  .book-title { font-size:17px; }
+}
 </style>
 </head>
 <body>
@@ -682,7 +766,7 @@
       </div>
 
       <div class="books-showcase">
-      <div class="books-grid reveal">
+      <div class="books-grid">
 
         <article class="book-card">
           <div class="book-cover"><img src="bts.jpeg" alt="Beyond the Spotlight book cover"></div>
@@ -866,6 +950,10 @@
   navToggle.addEventListener('click', () => setMenu(!document.body.classList.contains('nav-open')));
   menuClose.addEventListener('click', () => setMenu(false));
   menuOverlay.addEventListener('click', () => setMenu(false));
+  // Keep menu state and accessibility attributes synchronized.
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 720 && document.body.classList.contains('nav-open')) setMenu(false);
+  });
   document.querySelectorAll('.drawer-links a').forEach(link => link.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', (event) => {
     if(event.key === 'Escape' && document.body.classList.contains('nav-open')) setMenu(false);
