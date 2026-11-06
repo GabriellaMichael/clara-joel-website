@@ -522,40 +522,6 @@
     .reveal{ transition:none; opacity:1; transform:none; }
     .carousel-track{ transition:none; }
   }
-
-  /* Featured release hero: headline first, book cover and links beneath */
-  .hero-inner{
-    grid-template-columns:1fr;
-    gap:30px;
-    min-height:auto;
-    justify-items:center;
-    text-align:center;
-    padding-top:24px;
-    padding-bottom:24px;
-  }
-  .hero-copy{max-width:760px;margin:0 auto;}
-  .hero-copy .hero-subhead{margin-left:auto;margin-right:auto;}
-  .hero-book-wrap{
-    justify-self:center;
-    width:min(340px,78vw);
-  }
-  .hero-book-actions{
-    display:flex;
-    flex-direction:column;
-    align-items:stretch;
-    gap:12px;
-    margin-top:22px;
-  }
-  .hero-book-actions .hero-cta{
-    display:block;
-    margin-top:0;
-    width:100%;
-    box-sizing:border-box;
-  }
-  .hero-cta-secondary{
-    background:transparent;
-  }
-
 </style>
 </head>
 <body>
@@ -635,18 +601,16 @@
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="wrap hero-inner">
       <div class="hero-copy">
-        <p class="eyebrow">A New Release</p>
-        <h1>Fifty Million Dollars.<br><em>One Stolen Pair of Cufflinks.</em></h1>
-        <p class="hero-subhead">A ruthless man who never forgives.</p>
+        <p class="eyebrow">A Christmas Mystery</p>
+        <h1>This Christmas,<br><em>something big is coming.</em></h1>
+        <p class="hero-subhead">Some secrets are meant to stay hidden. But Christmas has a way of bringing them to light. Two girls, two secrets are on the line.</p>
+        <a class="hero-cta" href="#evergreen-lane">Coming Soon · December 24th</a>
       </div>
 
       <div class="hero-book-wrap">
         <div class="hero-book-glow" aria-hidden="true"></div>
-        <img src="enzo-cover.jpeg" alt="Claimed By The Ruthless Enzo by Clara Joel book cover" class="hero-book">
-        <div class="hero-book-actions">
-          <a class="hero-cta" href="https://a.co/d/01McvRdY" target="_blank" rel="noopener">Grab a Copy on Amazon</a>
-          <a class="hero-cta hero-cta-secondary" href="https://a.co/d/0cZPSKbV" target="_blank" rel="noopener">Read on Kindle Unlimited</a>
-        </div>
+        <img src="evergreen-lane.jpeg" alt="The Secrets Of Evergreen Lane book cover" class="hero-book">
+        <p class="hero-book-note">The first book in the Evergreen Lane Christmas Series</p>
       </div>
     </div>
   </section>
