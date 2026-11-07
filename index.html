@@ -7,7 +7,7 @@
 <meta name="description" content="Clara Joel writes young adult romance, fantasy, and mystery — Beyond the Spotlight, You Versus Me, Lemons and Lemonade, and more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream: #2d1327;
@@ -66,11 +66,10 @@
     display:flex; align-items:center; justify-content:space-between;
   }
   .nav-name{
-    font-family:var(--font-display);
-    font-size:22px; letter-spacing:0.06em;
-    color:var(--rose-deep); text-decoration:none;
-    font-weight:600;
+    display:flex; align-items:center; justify-content:center; width:min(48vw,390px);
+    text-decoration:none; line-height:0;
   }
+  .nav-name img{display:block;width:100%;height:auto;max-height:82px;object-fit:contain;}
   .nav-links{
     display:flex; gap:32px; list-style:none; margin:0; padding:0;
     font-size:15px; letter-spacing:0.09em; text-transform:uppercase;
@@ -110,7 +109,7 @@
   body.nav-open .menu-drawer{ transform:translateX(0); }
   .menu-drawer-header{ display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:48px; }
   .menu-brand-wrap{ display:flex; flex-direction:column; gap:5px; }
-  .menu-brand{ font-family:var(--font-body); font-size:31px; color:#F4EBDD; letter-spacing:.16em; font-weight:500; }
+  .menu-brand{ font-family:"Great Vibes",cursive; font-size:43px; color:#F4EBDD; letter-spacing:.16em; font-weight:500; }
   .menu-tagline{ margin:0; color:#C4A052; font-size:13px; letter-spacing:.11em; }
   .menu-close{ border:0; background:none; color:#C4A052; font-size:34px; line-height:1; cursor:pointer; padding:0 2px; }
   .drawer-links{ list-style:none; padding:0; margin:0; }
@@ -235,13 +234,23 @@
     display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:center;
   }
   .about-photo-frame{
-    position:relative; border:1px solid var(--gold);
-    padding:14px; background:var(--cream-alt);
+    position:relative; isolation:isolate; padding:12px;
+    background:linear-gradient(145deg, rgba(221,185,111,.22), rgba(58,26,51,.92));
+    border:1px solid var(--gold); border-radius:48% 48% 18px 18px / 34% 34% 18px 18px;
+    box-shadow:0 22px 48px rgba(0,0,0,.28);
   }
   .about-photo-frame::before{
-    content:""; position:absolute; inset:6px; border:1px solid rgba(201,161,90,0.35); pointer-events:none;
+    content:""; position:absolute; z-index:2; inset:6px; border:1px solid rgba(221,185,111,.55);
+    border-radius:48% 48% 13px 13px / 34% 34% 13px 13px; pointer-events:none;
   }
-  .about-photo-frame img{ width:100%; filter:saturate(0.96) contrast(1.02); }
+  .about-photo-frame::after{
+    content:""; position:absolute; z-index:3; right:-1px; bottom:-1px; width:48px; height:48px;
+    background:linear-gradient(135deg, #f0d59a 0%, #b8903f 52%, #4a2143 53%);
+    clip-path:polygon(100% 0,100% 100%,0 100%); border-bottom-right-radius:14px;
+    filter:drop-shadow(-3px -3px 3px rgba(0,0,0,.18));
+  }
+  .about-photo-frame img{ display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 35%;
+    border-radius:48% 48% 12px 12px / 34% 34% 12px 12px; filter:saturate(.98) contrast(1.02); }
   .about-copy p{ color:var(--text-dim); font-size:19px; }
   .about-full-story{
     display:inline-flex; align-items:center; gap:12px; margin-top:8px;
@@ -386,12 +395,12 @@
 
   .meet-clara-title{
     position:relative; display:inline-block; margin:0 0 18px !important;
-    font-size:clamp(44px,5.5vw,68px); line-height:.98; letter-spacing:.01em;
-    font-style:normal; font-weight:600;
+    font-family:"Great Vibes",cursive; font-size:clamp(58px,7vw,88px);
+    line-height:1.05; letter-spacing:0; font-style:normal; font-weight:400;
   }
   .meet-clara-title .name-accent{
-    color:var(--gold); font-family:var(--font-display); font-style:italic; font-weight:500;
-    letter-spacing:-.02em;
+    color:var(--gold-bright); font-family:"Great Vibes",cursive; font-style:normal; font-weight:400;
+    letter-spacing:0;
   }
 
 
@@ -501,7 +510,7 @@
   @media (max-width: 720px){
     .nav-links{ display:none; }
     .nav-toggle{ display:flex; }
-    .nav-name{ font-size:22px; }
+    .nav-name{ width:min(54vw,300px); } .nav-name img{max-height:66px;}
     .nav-actions{ gap:10px; }
     .hero{ padding-top:112px; }
     .hero-inner{ grid-template-columns:1fr; gap:48px; min-height:auto; }
@@ -568,7 +577,7 @@ html, body { width:100%; max-width:100%; overflow-x:hidden; }
   .site-nav { width:100%; left:0; right:0; }
   .nav-inner { width:100%; max-width:none; min-height:74px; padding:14px 18px; }
   .nav-toggle { flex:0 0 42px; z-index:1002; }
-  .nav-name { left:50%; font-size:22px; }
+  .nav-name { left:50%; width:min(54vw,300px); } .nav-name img{max-height:66px;}
   .nav-actions { flex:0 0 42px; justify-content:flex-end; }
 
   /* The navigation drawer must cover the complete phone screen. */
@@ -672,7 +681,7 @@ html, body { width:100%; max-width:100%; overflow-x:hidden; }
       <span></span><span></span><span></span>
     </button>
 
-    <a href="#top" class="nav-name">CLARA JOEL</a>
+    <a href="#top" class="nav-name" aria-label="Clara Joel home"><img src="clara-joel-wordmark.jpg" alt="Clara Joel — A Writer of Intense Passion &amp; Shadowed Romance"></a>
 
     <div class="nav-actions">
       <button class="nav-icon" id="searchToggle" aria-label="Search" type="button">
@@ -688,7 +697,7 @@ html, body { width:100%; max-width:100%; overflow-x:hidden; }
     <aside class="menu-drawer" id="menuDrawer" aria-label="Main navigation" aria-hidden="true">
       <div class="menu-drawer-header">
         <div class="menu-brand-wrap">
-          <div class="menu-brand">CLARA JOEL</div>
+          <div class="menu-brand">Clara Joel</div>
           <p class="menu-tagline">Author &amp; storyteller</p>
         </div>
         <button class="menu-close" id="menuClose" type="button" aria-label="Close menu">×</button>
@@ -762,11 +771,11 @@ html, body { width:100%; max-width:100%; overflow-x:hidden; }
     <div class="wrap reveal">
       <div class="about-grid">
         <div class="about-photo-frame">
-          <img src="clara2.jpeg" alt="Clara Joel">
+          <img src="clara-joel-author.jpg" alt="Clara Joel, author portrait">
         </div>
         <div class="about-copy">
-          <p class="about-eyebrow">Author</p>
-          <h2 class="meet-clara-title">Meet <span class="name-accent">Clara Joel</span></h2>
+          <p class="about-eyebrow">Meet the Author</p>
+          <h2 class="meet-clara-title"><span class="name-accent">Clara Joel</span></h2>
           <p class="about-intro">Writer of swoony YA romance, werewolf romance, and Christmas mysteries. Collector of happy endings. Lover of impossible love stories, moonlit mayhem, and a little holiday chaos.</p>
           <p>Clara Joel is a Nigerian author who writes young adult romance, fantasy, and mystery novels, with a particular love for Christmas mystery series. Her stories are filled with romance, intriguing plotlines, unexpected twists, and memorable characters that draw readers into captivating worlds. From heartfelt romances to fantastical adventures and mysteries that keep readers guessing, Clara enjoys creating stories that offer an escape while keeping readers turning the pages.</p>
           <p>When she isn't writing, Clara enjoys getting lost in a good book, designing book covers, or spending time in nature. Her stories can be found across various online reading platforms, giving readers the opportunity to explore her collection and discover their next favorite story.</p>
