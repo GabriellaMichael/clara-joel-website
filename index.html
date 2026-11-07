@@ -716,94 +716,148 @@ body.nav-open,body.search-open{overflow:hidden!important;}
 @media(max-width:600px){:root{--cj-header-h:clamp(94px,26.5625vw,160px)}.nav-icon{right:13.1%!important;width:34px!important;height:38px!important}.nav-icon svg{width:22px;height:22px}.menu-drawer{width:min(340px,86vw)!important;max-width:86vw!important;padding:22px 21px 28px!important}.drawer-links a{font-size:20px!important;padding:12px 20px 11px 0!important}}
 </style>
 
-<style id="clara-banner-visibility-fix">
-/* Display the exact supplied banner artwork at its native full-width proportions. */
-:root { --cj-header-h: min(26.5625vw, 204px) !important; }
-html { scroll-padding-top: calc(var(--cj-header-h) + 10px) !important; }
-body { padding-top: var(--cj-header-h) !important; }
+<style id="clara-page-specific-header-and-release">
+:root { --cj-header-height: min(26.5625vw, 204px); }
+html { scroll-padding-top: calc(var(--cj-header-height) + 12px) !important; }
+body { padding-top: var(--cj-header-height) !important; }
 header.site-nav {
   position: fixed !important;
-  inset: 0 0 auto 0 !important;
-  display: block !important;
+  top: 0 !important; left: 0 !important; right: 0 !important;
   width: 100% !important;
-  height: var(--cj-header-h) !important;
-  min-height: 0 !important;
-  max-height: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  height: var(--cj-header-height) !important;
+  min-height: 0 !important; max-height: none !important;
+  margin: 0 !important; padding: 0 !important;
   overflow: hidden !important;
+  z-index: 1500 !important;
   background: #10070d !important;
   border: 0 !important;
-  z-index: 1200 !important;
+  box-shadow: 0 1px 0 rgba(216,179,94,.25) !important;
 }
-header.site-nav > img.site-wordmark {
-  position: absolute !important;
+header.site-nav .site-wordmark {
+  position: absolute !important; inset: 0 !important;
   display: block !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  max-width: none !important;
-  max-height: none !important;
-  object-fit: fill !important;
-  object-position: center !important;
+  width: 100% !important; height: 100% !important;
+  max-width: none !important; max-height: none !important;
+  object-fit: fill !important; object-position: center !important;
   transform: none !important;
-  z-index: 1 !important;
 }
-/* Keep the logo's home link away from the hamburger artwork. */
-header.site-nav > .wordmark-home {
-  position: absolute !important;
-  left: 0 !important;
-  top: 0 !important;
-  width: 80% !important;
-  height: 100% !important;
-  z-index: 2 !important;
+header.site-nav .wordmark-home {
+  position: absolute !important; left: 0 !important; top: 0 !important;
+  width: 79% !important; height: 100% !important; z-index: 2 !important;
 }
-/* The three gold lines are already part of the image: this invisible button
-   sits directly over them and only supplies the click/tap action. */
-header.site-nav > .nav-toggle {
+header.site-nav .nav-toggle {
   position: absolute !important;
-  left: 82.5% !important;
-  top: 34% !important;
-  width: 13.5% !important;
-  height: 42% !important;
-  right: auto !important;
-  bottom: auto !important;
+  right: 4.5% !important; top: 33% !important;
+  width: 13.5% !important; height: 43% !important;
+  left: auto !important; bottom: auto !important;
+  margin: 0 !important; padding: 0 !important;
   transform: none !important;
   display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  opacity: 1 !important;
-  z-index: 5 !important;
-  cursor: pointer !important;
-  touch-action: manipulation !important;
+  border: 0 !important; background: transparent !important;
+  box-shadow: none !important; z-index: 5 !important;
+  cursor: pointer !important; touch-action: manipulation !important;
   -webkit-tap-highlight-color: transparent !important;
 }
-header.site-nav > .nav-toggle span { display: none !important; }
-header.site-nav > .nav-icon { display: none !important; }
-header.site-nav > .search-toggle,
-.search-panel { display: none !important; }
-.menu-overlay { top: var(--cj-header-h) !important; }
-.menu-drawer { top: var(--cj-header-h) !important; }
-@media (max-width: 600px) {
-  :root { --cj-header-h: 26.5625vw !important; }
-  header.site-nav > .nav-toggle {
-    left: 82.5% !important;
-    top: 34% !important;
-    width: 13.5% !important;
-    height: 42% !important;
-  }
+header.site-nav .nav-toggle span { opacity: 0 !important; display: none !important; }
+header.site-nav .nav-icon, header.site-nav .search-toggle, .search-panel { display: none !important; }
+.menu-overlay { top: var(--cj-header-height) !important; }
+.menu-drawer { top: var(--cj-header-height) !important; }
+
+/* Inner pages: matching banner without hamburger artwork, plus a visible home arrow. */
+body.cj-inner-page header.site-nav .nav-toggle,
+body.cj-inner-page .menu-overlay,
+body.cj-inner-page .menu-drawer { display: none !important; }
+body.cj-inner-page header.site-nav .wordmark-home { width: 100% !important; }
+.cj-back-home {
+  position: absolute !important;
+  right: 4.2% !important; top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 46px !important; height: 46px !important;
+  display: flex !important; align-items: center !important; justify-content: center !important;
+  z-index: 8 !important;
+  color: #d8b35e !important; text-decoration: none !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 36px !important; line-height: 1 !important;
+  border-radius: 50% !important;
+  background: rgba(12,5,10,.18) !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
+.cj-back-home:focus-visible { outline: 2px solid #e6c77c !important; outline-offset: 2px !important; }
+
+/* New & Upcoming Releases feature */
+#books.cj-upcoming-section {
+  width: 100% !important;
+  padding: clamp(54px, 8vw, 100px) 20px clamp(64px, 9vw, 110px) !important;
+  background: radial-gradient(ellipse at 50% 15%, rgba(113,69,112,.22), transparent 60%), #24131f !important;
+  overflow: hidden !important;
+}
+#books.cj-upcoming-section > .wrap {
+  width: 100% !important; max-width: 1100px !important;
+  margin: 0 auto !important; padding: 0 !important;
+}
+.cj-upcoming-heading { text-align: center !important; margin: 0 auto 36px !important; }
+.cj-upcoming-heading .section-eyebrow {
+  color: #d8b35e !important; letter-spacing: .28em !important;
+}
+.cj-upcoming-heading h2 {
+  color: #f3e8e4 !important;
+  font-size: clamp(32px, 6vw, 54px) !important;
+  line-height: 1.12 !important; margin: 12px 0 0 !important;
+}
+.cj-release-feature {
+  display: flex !important; align-items: center !important; justify-content: center !important;
+  gap: clamp(26px, 5vw, 64px) !important;
+  width: 100% !important; max-width: 820px !important;
+  margin: 0 auto !important;
+}
+.cj-release-cover {
+  display: block !important; width: min(42vw, 310px) !important;
+  max-width: 310px !important; height: auto !important;
+  aspect-ratio: 481 / 1024 !important; object-fit: contain !important;
+  border: 1px solid rgba(216,179,94,.62) !important;
+  box-shadow: 0 18px 44px rgba(0,0,0,.42) !important;
+}
+.cj-release-details { text-align: left !important; max-width: 390px !important; }
+.cj-release-details h3 {
+  color: #f2e5e5 !important; font-size: clamp(25px, 4vw, 38px) !important;
+  line-height: 1.15 !important; margin: 0 0 12px !important;
+}
+.cj-release-author { color: #d8b35e !important; letter-spacing: .12em !important; margin: 0 0 25px !important; }
+.cj-release-date {
+  display: inline-block !important; color: #f0dcae !important;
+  border: 1px solid #b89550 !important; padding: 13px 18px !important;
+  letter-spacing: .08em !important; line-height: 1.5 !important;
+}
+@media (max-width: 640px) {
+  .cj-release-feature { flex-direction: column !important; gap: 25px !important; text-align: center !important; }
+  .cj-release-cover { width: min(68vw, 270px) !important; }
+  .cj-release-details { text-align: center !important; }
+  .cj-release-date { font-size: 14px !important; }
+}
+</style>
+
+
+<style id="cj-release-cover-date-stack">
+.cj-release-feature {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 22px !important;
+  text-align: center !important;
+}
+.cj-release-cover {
+  width: min(58vw, 310px) !important;
+  max-width: 310px !important;
+}
+.cj-release-details { text-align: center !important; }
 </style>
 
 </head>
 <body>
 
 <header class="site-nav" role="banner">
-  <img class="site-wordmark" src="clara-joel-full-header-banner.jpg" alt="Clara Joel — A Writer of Intense Passion &amp; Shadowed Romance">
+  <img class="site-wordmark" src="clara-joel-home-banner.jpg" alt="Clara Joel — A Writer of Intense Passion &amp; Shadowed Romance">
   <a class="wordmark-home" href="index.html" aria-label="Clara Joel home"></a>
   <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="menuDrawer" type="button"><span></span><span></span><span></span></button>
   <button class="nav-icon" id="searchToggle" aria-label="Search" aria-expanded="false" aria-controls="searchPanel" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"></circle><path d="M16 16l5 5"></path></svg></button>
@@ -866,111 +920,22 @@ header.site-nav > .search-toggle,
     </div>
   </section>
 
-  <section id="books">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="section-eyebrow">The Books</p>
-        <h2>On the Shelf</h2>
-        <p class="section-sub">From stage-light romance to reborn revenge — a shelf that keeps growing.</p>
-      </div>
-
-      <div class="books-showcase">
-      <div class="books-grid">
-
-        <article class="book-card">
-          <div class="book-cover"><img src="bts.jpeg" alt="Beyond the Spotlight book cover"></div>
-          <div class="book-body">
-            <p class="book-series">Holiday Spark · Book Two · 2nd Edition</p>
-            <h3 class="book-title">Beyond the Spotlight</h3>
-            <p class="book-author">Clara Joel</p>
-            <p class="book-teaser">Under the lights, everyone's watching. She just wants him to see her.</p>
-            <div class="book-links">
-              <a class="book-cta" href="https://a.co/d/03cwXBXI" target="_blank" rel="noopener">Amazon</a>
-              <a class="book-cta" href="https://pabpub.com/book/3396" target="_blank" rel="noopener">PABpub</a>
-              <a class="book-cta" href="https://www.kobo.com/ca/en/ebook/beyond-the-spotlight-7?srsltid=AfmBOoqm2s0tM9PT5SgKqwZTIRID-q1cKTirH2YYESS5jb9w7efj_Zny" target="_blank" rel="noopener">Kobo</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="book-card">
-          <div class="book-cover"><img src="rim.jpeg" alt="Reborn: I Married His Nemesis book cover"></div>
-          <div class="book-body">
-            <p class="book-series">Standalone</p>
-            <h3 class="book-title">Reborn: I Married His Nemesis</h3>
-            <p class="book-author">CJ Fantasies</p>
-            <p class="book-teaser">She's lived this marriage before. This time, she's rewriting the ending.</p>
-            <div class="book-links">
-              <a class="book-cta" href="https://www.novelol.com/goodnovel/share?bid=31001504507&uid=81933860&l=bookDetail&sc=fxrw_0_bookDetail&rd=1&type=3" target="_blank" rel="noopener">Read on GoodNovel</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="book-card">
-          <div class="book-cover"><img src="yvm.jpeg" alt="You Versus Me book cover"></div>
-          <div class="book-body">
-            <p class="book-series">Standalone</p>
-            <h3 class="book-title">You Versus Me</h3>
-            <p class="book-author">Clara Joel</p>
-            <p class="book-teaser">One mistake. Two broken hearts. And a whole lot of chaos.</p>
-            <div class="book-links">
-              <span class="book-cta soon">Coming Soon</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="book-card">
-          <div class="book-cover"><img src="lal.jpeg" alt="Lemons and Lemonade book cover"></div>
-          <div class="book-body">
-            <p class="book-series">By the author of All Those Times</p>
-            <h3 class="book-title">Lemons and Lemonade</h3>
-            <p class="book-author">Clara Joel</p>
-            <p class="book-teaser">Her story. Her journey. Her voice.</p>
-            <div class="book-links">
-              <span class="book-cta soon">Coming Soon</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="book-card" id="evergreen-lane">
-          <div class="book-cover"><img src="evergreen-lane.jpeg" alt="The Secrets Of Evergreen Lane book cover"></div>
-          <div class="book-body">
-            <p class="book-series">First book in the Evergreen Lane Christmas Series</p>
-            <h3 class="book-title">The Secrets Of Evergreen Lane</h3>
-            <p class="book-author">Clara Joel</p>
-            <p class="book-teaser">Some Secrets are meant to stay hidden. But Christmas has a way of bringing them to light. Two girls, two secrets, one Christmas that changes everything.</p>
-            <div class="book-links">
-              <span class="book-cta soon">Coming Soon</span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-
-      <div class="carousel-wrap reveal">
-        <div class="carousel-heading">
-          <a class="carousel-library-link" href="library.html"><p>Explore the Library</p>
-          <h3>Explore the Books</h3></a>
-        </div>
-        <div class="carousel-shell">
-          <div class="carousel" id="carousel">
-            <div class="carousel-track" id="carouselTrack">
-              <div class="carousel-slide"><img src="bts.jpeg" alt="Beyond the Spotlight"></div>
-              <div class="carousel-slide"><img src="rim.jpeg" alt="Reborn: I Married His Nemesis"></div>
-              <div class="carousel-slide"><img src="yvm.jpeg" alt="You Versus Me"></div>
-              <div class="carousel-slide"><img src="lal.jpeg" alt="Lemons and Lemonade"></div>
-              <div class="carousel-slide"><img src="evergreen-lane.jpeg" alt="The Secrets Of Evergreen Lane"></div>
-              <div class="carousel-slide"><img src="bts.jpeg" alt="Beyond the Spotlight"></div>
-              <div class="carousel-slide"><img src="rim.jpeg" alt="Reborn: I Married His Nemesis"></div>
-              <div class="carousel-slide"><img src="yvm.jpeg" alt="You Versus Me"></div>
-              <div class="carousel-slide"><img src="lal.jpeg" alt="Lemons and Lemonade"></div>
-              <div class="carousel-slide"><img src="evergreen-lane.jpeg" alt="The Secrets Of Evergreen Lane"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
+  
+<section id="books" class="cj-upcoming-section">
+  <div class="wrap">
+    <div class="cj-upcoming-heading">
+      <p class="section-eyebrow">Clara Joel</p>
+      <h2>New &amp; Upcoming Releases</h2>
     </div>
-  </section>
+    <article class="cj-release-feature">
+      <img class="cj-release-cover" src="the-cursed-lycan-princess.png" alt="The Cursed Lycan Princess by Clara Joel book cover">
+      <div class="cj-release-details">
+        <p class="cj-release-date">Out on January 31st, 2027</p>
+      </div>
+    </article>
+  </div>
+</section>
+
 
   <section id="arc" class="arc-callout">
     <div class="wrap">
