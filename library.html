@@ -42,6 +42,63 @@ body.search-open .search-panel{transform:translateY(0)!important;visibility:visi
 body.nav-open,body.search-open{overflow:hidden!important;}
 @media(max-width:600px){:root{--cj-header-h:clamp(94px,26.5625vw,160px)}.nav-icon{right:13.1%!important;width:34px!important;height:38px!important}.nav-icon svg{width:22px;height:22px}.menu-drawer{width:min(340px,86vw)!important;max-width:86vw!important;padding:22px 21px 28px!important}.drawer-links a{font-size:20px!important;padding:12px 20px 11px 0!important}}
 </style>
+
+<style id="clara-exact-banner-no-search">
+:root { --cj-header-h: 26.5625vw !important; }
+html { scroll-padding-top: calc(26.5625vw + 12px) !important; }
+body { padding-top: 26.5625vw !important; }
+header.site-nav {
+  position: fixed !important;
+  top: 0 !important; left: 0 !important; right: 0 !important;
+  width: 100% !important;
+  height: 26.5625vw !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 0 !important; margin: 0 !important;
+  border: 0 !important;
+  z-index: 1200 !important;
+  background: #10070d url('clara-joel-wordmark.jpg') center center / 100% 100% no-repeat !important;
+  backdrop-filter: none !important;
+}
+.site-wordmark {
+  position: absolute !important; inset: 0 !important;
+  width: 100% !important; height: 100% !important;
+  object-fit: fill !important; display: block !important;
+}
+.wordmark-home {
+  position: absolute !important; left: 0 !important; top: 0 !important;
+  width: 76% !important; height: 100% !important; z-index: 2 !important;
+}
+.nav-toggle {
+  position: absolute !important;
+  right: 4.5% !important; left: auto !important;
+  top: 50% !important; transform: translateY(-50%) !important;
+  width: 12% !important; height: 58% !important;
+  min-width: 0 !important; max-width: none !important;
+  padding: 0 !important; margin: 0 !important;
+  border: 0 !important; background: transparent !important;
+  z-index: 5 !important; cursor: pointer !important;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+.nav-toggle span { opacity: 0 !important; width: 100% !important; height: 100% !important; }
+.nav-icon { display: none !important; }
+.search-panel { display: none !important; }
+.nav-toggle:focus-visible {
+  outline: 2px solid #d8b35e !important;
+  outline-offset: -3px !important;
+}
+.menu-overlay {
+  top: 26.5625vw !important;
+}
+.menu-drawer {
+  top: 26.5625vw !important;
+}
+@media (max-width: 600px) {
+  .nav-toggle { right: 3.5% !important; width: 14% !important; height: 62% !important; }
+}
+</style>
+
 </head><body><header class="site-nav" role="banner">
   <img class="site-wordmark" src="clara-joel-wordmark.jpg" alt="Clara Joel — A Writer of Intense Passion &amp; Shadowed Romance">
   <a class="wordmark-home" href="index.html" aria-label="Clara Joel home"></a>
