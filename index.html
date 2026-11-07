@@ -569,6 +569,8 @@
   .hero-subhead { font-size:18px; }
 }
 
+</style>
+
 <style id="clara-mobile-final-fix">
 /* Full-width mobile homepage + editorial book gallery + full-screen menu */
 html, body { width:100%; max-width:100%; overflow-x:hidden; }
@@ -672,80 +674,74 @@ html, body { width:100%; max-width:100%; overflow-x:hidden; }
   body.nav-open{overflow:hidden!important;}
 }
 </style>
+<style id="clara-shared-header-final">
+/* Clara Joel full-width banner header and compact side navigation */
+body{padding-top:0!important;} 
+:root{--cj-header-h:clamp(94px,26.5625vw,204px);--cj-gold:#d8b35e;}
+html{scroll-padding-top:calc(var(--cj-header-h) + 12px)}
+body{padding-top:var(--cj-header-h)!important;}
+header.site-nav{position:fixed!important;top:0!important;left:0!important;right:0!important;width:100%!important;height:var(--cj-header-h)!important;z-index:1200!important;padding:0!important;margin:0!important;border:0!important;background:#10070d url('clara-joel-wordmark.jpg') center/100% 100% no-repeat!important;backdrop-filter:none!important;}
+.site-wordmark{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;display:block;}
+.wordmark-home{position:absolute;left:0;top:0;width:76%;height:100%;z-index:2;}
+.nav-toggle{position:absolute!important;right:5.5%!important;top:50%!important;transform:translateY(-50%)!important;width:11%!important;height:56%!important;min-width:0!important;max-width:none!important;padding:0!important;margin:0!important;border:0!important;background:transparent!important;z-index:4!important;cursor:pointer!important;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+.nav-toggle span{opacity:0!important;width:100%!important;height:100%!important;}
+.nav-icon{position:absolute!important;right:13.6%!important;top:50%!important;transform:translateY(-50%)!important;width:40px!important;height:44px!important;display:grid!important;place-items:center!important;padding:8px!important;margin:0!important;border:0!important;background:transparent!important;color:var(--cj-gold)!important;z-index:4!important;cursor:pointer!important;}
+.nav-icon svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+.menu-overlay{position:fixed!important;inset:var(--cj-header-h) 0 0 0!important;z-index:1100!important;background:rgba(10,4,9,.55)!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;transition:opacity .28s ease,visibility .28s ease!important;}
+body.nav-open .menu-overlay{opacity:1!important;visibility:visible!important;pointer-events:auto!important;}
+.menu-drawer{position:fixed!important;left:0!important;top:var(--cj-header-h)!important;bottom:0!important;right:auto!important;width:min(370px,84vw)!important;min-width:0!important;max-width:84vw!important;height:auto!important;max-height:none!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;box-sizing:border-box!important;padding:26px 26px 34px!important;background:#24151f!important;border-right:1px solid rgba(216,179,94,.55)!important;box-shadow:18px 15px 50px rgba(0,0,0,.38)!important;z-index:1101!important;transform:translate3d(-105%,0,0)!important;visibility:hidden!important;transition:transform .34s cubic-bezier(.22,.61,.36,1),visibility 0s linear .34s!important;}
+body.nav-open .menu-drawer{transform:translate3d(0,0,0)!important;visibility:visible!important;transition:transform .34s cubic-bezier(.22,.61,.36,1),visibility 0s!important;}
+.menu-drawer-header{display:flex!important;align-items:center!important;justify-content:space-between!important;margin:0 0 22px!important;}
+.menu-brand{font-family:'Great Vibes',cursive!important;font-size:39px!important;letter-spacing:0!important;color:#f4ebdd!important;}
+.menu-tagline{margin:0!important;color:#c4a052!important;font-size:13px!important;}
+.menu-close{display:grid!important;place-items:center!important;width:42px!important;height:42px!important;padding:0!important;border:0!important;background:transparent!important;color:#d8b35e!important;font-size:34px!important;cursor:pointer!important;}
+.drawer-links{list-style:none!important;margin:0!important;padding:0!important;}
+.drawer-links li{border-bottom:1px solid rgba(216,179,94,.2)!important;}
+.drawer-links a{display:block!important;padding:14px 24px 13px 0!important;color:#f4ebdd!important;text-decoration:none!important;font-size:22px!important;line-height:1.2!important;}
+.drawer-links a small{display:block!important;margin-top:4px!important;color:#cbb7a7!important;font-size:12px!important;}
+.menu-note{margin:24px 0 0!important;color:#d8c9bd!important;font-size:13px!important;}
+.menu-socials{display:flex!important;gap:16px!important;flex-wrap:wrap!important;margin-top:18px!important;}
+.menu-socials a{color:#d8b35e!important;text-decoration:none!important;font-size:11px!important;letter-spacing:.1em!important;text-transform:uppercase!important;}
+.search-panel{position:fixed!important;inset:var(--cj-header-h) 0 auto!important;z-index:1150!important;padding:20px 22px 24px!important;background:rgba(36,21,31,.98)!important;border-bottom:1px solid rgba(216,179,94,.4)!important;transform:translateY(-120%)!important;visibility:hidden!important;transition:transform .28s ease,visibility .28s ease!important;}
+body.search-open .search-panel{transform:translateY(0)!important;visibility:visible!important;}
+.search-panel-inner{max-width:760px;margin:0 auto;}
+.search-panel label{display:block;margin-bottom:8px;color:#d8b35e;font-size:11px;letter-spacing:.18em;text-transform:uppercase;}
+.search-box{display:flex;align-items:center;border-bottom:1px solid #b8903f;}
+.search-box input{flex:1;min-width:0;background:transparent!important;color:#f4ebdd!important;border:0!important;outline:0!important;padding:12px 0!important;font:20px 'EB Garamond',serif!important;}
+.search-box button{border:0!important;background:transparent!important;color:#d8b35e!important;font-size:30px!important;cursor:pointer!important;}
+.search-results{display:grid;gap:8px;max-height:42vh;overflow:auto;margin-top:12px;}
+.search-result{display:block;padding:9px 12px;color:#f4ebdd;text-decoration:none;border-left:1px solid #d8b35e;background:rgba(255,255,255,.04);}
+.search-result small{display:block;color:#cbb7a7;font-size:12px;}
+body.nav-open,body.search-open{overflow:hidden!important;}
+@media(max-width:600px){:root{--cj-header-h:clamp(94px,26.5625vw,160px)}.nav-icon{right:13.1%!important;width:34px!important;height:38px!important}.nav-icon svg{width:22px;height:22px}.menu-drawer{width:min(340px,86vw)!important;max-width:86vw!important;padding:22px 21px 28px!important}.drawer-links a{font-size:20px!important;padding:12px 20px 11px 0!important}}
+</style>
 </head>
 <body>
 
-<header class="site-nav">
-  <div class="nav-inner">
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-    <a href="#top" class="nav-name" aria-label="Clara Joel home"><img src="clara-joel-wordmark.jpg" alt="Clara Joel — A Writer of Intense Passion &amp; Shadowed Romance"></a>
-
-    <div class="nav-actions">
-      <button class="nav-icon" id="searchToggle" aria-label="Search" type="button">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"></circle><path d="M16 16l5 5"></path></svg>
-      </button>
-    </div>
-
-
-  </div>
+<header class="site-nav" role="banner">
+  <img class="site-wordmark" src="clara-joel-wordmark.jpg" alt="Clara Joel — A Writer of Intense Passion &amp; Shadowed Romance">
+  <a class="wordmark-home" href="index.html" aria-label="Clara Joel home"></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="menuDrawer" type="button"><span></span><span></span><span></span></button>
+  <button class="nav-icon" id="searchToggle" aria-label="Search" aria-expanded="false" aria-controls="searchPanel" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"></circle><path d="M16 16l5 5"></path></svg></button>
 </header>
-
-    <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
-    <aside class="menu-drawer" id="menuDrawer" aria-label="Main navigation" aria-hidden="true">
-      <div class="menu-drawer-header">
-        <div class="menu-brand-wrap">
-          <div class="menu-brand">Clara Joel</div>
-          <p class="menu-tagline">Author &amp; storyteller</p>
-        </div>
-        <button class="menu-close" id="menuClose" type="button" aria-label="Close menu">×</button>
-      </div>
-      <nav aria-label="Main navigation">
-        <ul class="drawer-links">
-          <li><a href="index.html"><span>Home</span><small>Return to Clara Joel’s home page</small></a></li>
-          <li><a href="library.html"><span>Explore The Library</span><small>View all books and discover my stories</small></a></li>
-          <li><a href="about.html"><span>About the Author</span><small>Learn more about Clara Joel</small></a></li>
-          <li><a href="arc.html"><span>ARC Program</span><small>Join the advance reader community</small></a></li>
-          <li><a href="giveaway.html"><span>Giveaway</span><small>Enter current giveaways</small></a></li>
-          <li><a href="events.html"><span>Events</span><small>Upcoming appearances and events</small></a></li>
-          <li><a href="newsletter.html"><span>Newsletter</span><small>Get new book news and updates</small></a></li>
-          <li><a href="faq.html"><span>FAQ</span><small>Frequently asked questions</small></a></li>
-          <li><a href="contact.html"><span>Contact</span><small>Get in touch</small></a></li>
-        </ul>
-      </nav>
-      <p class="menu-note">Stories, secrets, impossible love stories, and a little holiday chaos.</p>
-      <div class="menu-socials">
-        <a href="https://instagram.com/Clarajoelwrites" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.facebook.com/share/198j1yuRaY/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://youtube.com/@clarajoel-b7l" target="_blank" rel="noopener">YouTube</a>
-      </div>
-    </aside>
-
-<div class="search-panel" id="searchPanel" aria-hidden="true">
-  <div class="search-panel-inner">
-    <label for="siteSearch">Search the site</label>
-    <div class="search-box">
-      <input id="siteSearch" type="search" placeholder="Search books, Clara Joel, and more…" autocomplete="off">
-      <button id="searchClose" type="button" aria-label="Close search">×</button>
-    </div>
-    <div class="search-suggestions" id="searchSuggestions" aria-label="Suggested searches">
-      <p>Suggested</p>
-      <div class="suggestion-list">
-        <a href="library.html">Explore the Library</a>
-        <a href="faq.html">FAQ &amp; Contact</a>
-        <a href="arc.html">ARC Program</a>
-        <a href="giveaway.html">Giveaway</a>
-        <a href="events.html">Events</a>
-        <a href="contact.html">Contact</a>
-        <a href="newsletter.html">Newsletter</a>
-      </div>
-        <div class="search-results" id="searchResults" aria-live="polite"></div>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+<aside class="menu-drawer" id="menuDrawer" aria-label="Main navigation" aria-hidden="true" inert>
+ <div class="menu-drawer-header"><div class="menu-brand-wrap"><div class="menu-brand">Clara Joel</div><p class="menu-tagline">Author &amp; storyteller</p></div><button class="menu-close" id="menuClose" type="button" aria-label="Close menu">×</button></div>
+ <nav aria-label="Main navigation"><ul class="drawer-links">
+  <li><a href="index.html"><span>Home</span><small>Return to Clara Joel’s home page</small></a></li>
+  <li><a href="library.html"><span>Explore The Library</span><small>View all books and discover my stories</small></a></li>
+  <li><a href="about.html"><span>About the Author</span><small>Learn more about Clara Joel</small></a></li>
+  <li><a href="arc.html"><span>ARC Program</span><small>Join the advance reader community</small></a></li>
+  <li><a href="giveaway.html"><span>Giveaway</span><small>Enter current giveaways</small></a></li>
+  <li><a href="events.html"><span>Events</span><small>Upcoming appearances and events</small></a></li>
+  <li><a href="newsletter.html"><span>Newsletter</span><small>Get new book news and updates</small></a></li>
+  <li><a href="faq.html"><span>FAQ</span><small>Frequently asked questions</small></a></li>
+  <li><a href="contact.html"><span>Contact</span><small>Get in touch</small></a></li>
+ </ul></nav>
+ <p class="menu-note">Stories, secrets, impossible love stories, and a little holiday chaos.</p>
+ <div class="menu-socials"><a href="https://instagram.com/Clarajoelwrites" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/share/198j1yuRaY/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a><a href="https://youtube.com/@clarajoel-b7l" target="_blank" rel="noopener">YouTube</a></div>
+</aside>
+<div class="search-panel" id="searchPanel" aria-hidden="true" inert><div class="search-panel-inner"><label for="siteSearch">Search the site</label><div class="search-box"><input id="siteSearch" type="search" placeholder="Search books, Clara Joel, and more…" autocomplete="off"><button id="searchClose" type="button" aria-label="Close search">×</button></div><div class="search-results" id="searchResults" aria-live="polite"></div></div></div>
 
 <main id="top">
 
@@ -971,23 +967,18 @@ html, body { width:100%; max-width:100%; overflow-x:hidden; }
   function setMenu(open){
     document.body.classList.toggle('nav-open', open);
     navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
     menuDrawer.setAttribute('aria-hidden', String(!open));
+    menuDrawer.toggleAttribute('inert', !open);
     menuOverlay.setAttribute('aria-hidden', String(!open));
-    document.body.style.overflow = open ? 'hidden' : '';
-    if(open){ window.setTimeout(() => menuClose.focus({preventScroll:true}), 40); }
+    if(open){ document.body.classList.remove('search-open'); window.setTimeout(() => menuClose.focus({preventScroll:true}), 40); }
     else { navToggle.focus({preventScroll:true}); }
   }
-  navToggle.addEventListener('click', function(event){ event.preventDefault(); event.stopPropagation(); setMenu(!document.body.classList.contains('nav-open')); });
-  menuClose.addEventListener('click', function(event){ event.preventDefault(); setMenu(false); });
-  menuOverlay.addEventListener('click', function(){ setMenu(false); });
-  // Keep menu state and accessibility attributes synchronized.
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 720 && document.body.classList.contains('nav-open')) setMenu(false);
-  });
+  navToggle.addEventListener('click', event => { event.preventDefault(); setMenu(!document.body.classList.contains('nav-open')); });
+  menuClose.addEventListener('click', () => setMenu(false));
+  menuOverlay.addEventListener('click', () => setMenu(false));
   document.querySelectorAll('.drawer-links a').forEach(link => link.addEventListener('click', () => setMenu(false)));
-  document.addEventListener('keydown', (event) => {
-    if(event.key === 'Escape' && document.body.classList.contains('nav-open')) setMenu(false);
-  });
+  document.addEventListener('keydown', event => { if(event.key==='Escape'){setMenu(false);setSearch(false);} });
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -1014,6 +1005,9 @@ html, body { width:100%; max-width:100%; overflow-x:hidden; }
   function setSearch(open){
     document.body.classList.toggle('search-open', open);
     searchPanel.setAttribute('aria-hidden', String(!open));
+    searchPanel.toggleAttribute('inert', !open);
+    searchToggle.setAttribute('aria-expanded', String(open));
+    if(open) setMenu(false);
     if (open) setTimeout(() => siteSearch.focus(), 150);
   }
   searchToggle.addEventListener('click', () => setSearch(!document.body.classList.contains('search-open')));
